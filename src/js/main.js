@@ -1,5 +1,5 @@
-import './style.css';
-import './mobile.css';
+import '../css/style.css';
+import '../css/mobile.css';
 
 /* mokki dataa */
 const lastWorkout = {name: 'Juoksu 5 km', date: 'Eilen'};

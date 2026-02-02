@@ -1,6 +1,6 @@
-import './style.css';
-import './bmi.css';
-import './mobile.css';
+import '../css/style.css';
+import '../css/bmi.css';
+import '../css/mobile.css';
 
 // Navigaation toggle
 const menuToggle = document.querySelector('.menu-toggle');
