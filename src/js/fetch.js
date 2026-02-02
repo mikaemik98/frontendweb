@@ -1,4 +1,3 @@
-import '../css/api.css';
 /**
  * Fetches JSON data from APIs
  *
