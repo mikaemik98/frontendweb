@@ -1,0 +1,290 @@
+/*////////////////////
+        // Positioning items    
+        //////////////////////
+        
+        Reset *
+        Display: inline vs block
+        https://www.w3schools.com/cssref/pr_class_display.asp
+    
+        Box-sizing
+        https://www.w3schools.com/css/css3_box-sizing.asp
+        
+        Using percentages and max-width
+        https://www.w3schools.com/cssref/css_units.asp
+        Centering
+        https://www.w3schools.com/css/css_align.asp
+    
+        Float and clear
+        https://www.w3schools.com/cssref/pr_class_float.asp
+                
+        Absolute/Relative positioning
+        https://www.w3schools.com/cssref/pr_class_position.asp
+        
+        
+        Flexbox - https://www.w3schools.com/css/css3_flexbox.asp
+        */
+:root {
+  --primary: #69b3c8;
+  --secondary: #edf7f6;
+  --accent: #a8dadc;
+  --dark: #1d3557;
+  --light: #ffffff;
+  --radius: 16px;
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--secondary);
+  color: var(--dark);
+}
+
+main {
+  margin-top: 70px;
+}
+
+.clear {
+  clear: both;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--light);
+  cursor: pointer;
+  margin: auto;
+}
+
+/* navigatio barin container */
+.container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(69, 123, 157, 0.85);
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  z-index: 1000;
+}
+
+/* navbar isolla näyttöllä */
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  flex: 1;
+  color: var(--light);
+}
+
+/* NAV LINKS */
+.navbar nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar a {
+  font-weight: bold;
+  color: var(--light);
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+
+.hero {
+  position: relative;
+  height: 400px;
+  margin-top: 70px;
+  overflow: hidden;
+}
+
+/* background kuva*/
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/moment.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.65);
+}
+
+/* hero kuvan gradient*/
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(29, 53, 87, 0.4),
+    rgba(29, 53, 87, 0.6)
+  );
+}
+
+.hero-content {
+  position: relative;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+  font-size: 24px;
+}
+
+.info-area {
+  width: 80%;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.info-area h2 {
+  font-size: 2rem;
+  color: var(--dark);
+  position: relative;
+}
+
+.info-area h2::after {
+  content: '';
+  display: block;
+  width: 395px;
+  height: 4px;
+  background: var(--primary);
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.about-us {
+  width: 50%;
+  margin: 60px auto;
+  background: var(--light);
+  margin-bottom: 60px;
+  padding: 10px;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.about-us p {
+  line-height: 1.6;
+}
+
+.cardimg {
+  float: right;
+  width: min(40%, 280px);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  margin: 0 10px 10px 0;
+  shape-outside: margin-box;
+}
+
+/*DASHBOARD*/
+.dashboard {
+  width: 80%;
+  margin: 100px auto 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.dashboardheader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dashboardheader h1 {
+  font-size: 2rem;
+}
+
+.dashboardheader p {
+  color: #457b9d;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--light);
+  padding: 26px;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.card h3 {
+  font-size: 0.9rem;
+  color: #457b9d;
+  text-transform: uppercase;
+}
+
+.card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card span {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.activity ul {
+  list-style: none;
+  padding: 0;
+}
+
+.activity li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--light);
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+footer {
+  background-color: var(--primary);
+  margin-top: 50px;
+  width: 100%;
+  height: 80px;
+  color: black;
+  text-align: center;
+  padding-top: 40px;
+}

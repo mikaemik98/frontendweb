@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsiivinen suunnittelu</title>
+    <style>
+      /*mobiili ensin, yleensä desktop ensin*/
+      body {
+        background: linear-gradient(
+          90deg,
+          rgba(131, 58, 180, 1) 0%,
+          rgba(253, 29, 29, 1) 50%,
+          rgba(252, 176, 69, 1) 100%
+        );
+        font-family:
+          'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+          'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+
+      #kuva {
+        width: 100%;
+        max-width: 700px;
+      }
+
+      @media screen and (min-width: 720px) {
+        #kuva {
+          display: block;
+          margin: auto;
+        }
+      }
+
+      #kuva2 {
+        width: 50%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      #taustakuva {
+        width: 50%;
+        height: 300px;
+        background-color: bisque;
+        background-image: url(/img/kukka.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        /*background-attachment: fixed;*/
+      }
+
+      @media screen and (min-width: 600px) {
+        body {
+          background-color: burlywood;
+        }
+        #taustakuva {
+          background-image: url(/img/tonttu.jpg);
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        body {
+          background-color: aquamarine;
+        }
+      }
+
+      /*@media screen and (min-width: 700px) and (max-width: 800px) {
+        p {
+          font-size: 30px;
+        }
+      }*/
+    </style>
+  </head>
+  <body>
+    <h1>Otsikko</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum eius
+      iure optio exercitationem doloribus magnam voluptatem ex delectus cumque
+      provident velit, quia ducimus nihil assumenda voluptas fugiat saepe!
+      Beatae, assumenda. Lorem ipsum dolor sit amet consectetur, adipisicing
+      elit. Deserunt quisquam animi in eum quis sapiente cum repellendus
+      consequuntur, repudiandae mollitia cupiditate asperiores voluptas
+      perferendis quaerat quod corporis saepe exercitationem quas!
+    </p>
+
+    <h3>Normaali IMG kuva ja mediasäännöt</h3>
+    <img id="kuva" src="/img/allgau.jpg" alt="" />
+
+    <h3>Object fit</h3>
+    <img id="kuva2" src="/img/lizard.jpg" alt="" />
+
+    <h3>Taustakuva</h3>
+    <div id="taustakuva"></div>
+  </body>
+</html>

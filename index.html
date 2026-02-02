@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>HealthDiary</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <h2 class="logo">HealthDiary</h2>
+        <nav>
+          <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#diary">Diary</a></li>
+            <li><a href="#workouts">Workouts</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="bmi.html">Progress</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle">
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>Tervetuloa HealthDiaryyn</h1>
+        <p>Seuraa treenejäsi ja hyvinvointiasi helposti</p>
+      </div>
+    </section>
+
+    <section class="info-area" id="info">
+      <h2>Mitä HealthDiary edustaa?</h2>
+    </section>
+    <section class="about-us" id="contact">
+      <p>
+        <img src="/img/data.png" alt="Kuva datasta" class="fl cardimg" />
+        HealthDiary on yksinkertainen ja käyttäjäystävällinen sovellus, joka
+        auttaa seuraamaan treenejäsi ja hyvinvointiasi. Sovelluksen avulla voit
+        helposti seurata painoa, treenejä ja tavoitteita. Lisäksi HealthDiary
+        tarjoaa visuaalisia yhteenvetoja ja tilastoja, jotka auttavat sinua
+        ymmärtämään edistymistäsi paremmin. Mikä tekee HealthDiarystä erityisen,
+        on sen mobiiliystävällinen suunnittelu. Sovellus on optimoitu toimimaan
+        sujuvasti eri laitteilla, joten voit käyttää sitä missä ja milloin
+        tahansa. Olitpa sitten kotona, kuntosalilla tai matkalla, HealthDiary on
+        aina kätesi ulottuvilla.
+      </p>
+    </section>
+
+    <main class="dashboard">
+      <header class="dashboardheader">
+        <h1>Hei, Miku</h1>
+        <p>Tässä tämän viikon hyvinvointi yhteenveto</p>
+      </header>
+
+      <section class="cards">
+        <div class="card" id="cardworkout">
+          <h3>Viimeisin treeni</h3>
+          <p>Ei merkintöjä</p>
+          <span></span>
+        </div>
+
+        <div class="card" id="cardweight">
+          <h3>Paino</h3>
+          <p>Ei merkintöjä</p>
+          <span></span>
+        </div>
+
+        <div class="card" id="cardgoals">
+          <h3>Tavoite</h3>
+          <p>Ei merkintöjä</p>
+          <span></span>
+        </div>
+      </section>
+
+      <section class="activity">
+        <h2>Viimeisimmät merkinnät</h2>
+        <ul id="activityfeed">
+          <li>Ei merkintöjä</li>
+        </ul>
+      </section>
+    </main>
+    <footer>Copyright by Miku</footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
