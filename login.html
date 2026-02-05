@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <title>Login - HealthDiary</title>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="container">
+        <div class="navbar">
+            <h2 class="logo">HealthDiary</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- LOGIN AREA -->
+    <main class="auth-wrapper">
+
+        <div class="card auth-card">
+
+            <h2>Kirjaudu sisään</h2>
+
+            <input type="text" id="login-username" placeholder="Käyttäjänimi">
+            <input type="password" id="login-password" placeholder="Salasana">
+
+            <button class="primary-btn" id="login-btn">
+                Kirjaudu
+            </button>
+
+            <p class="auth-divider">tai</p>
+
+            <h3>Luo käyttäjä</h3>
+
+            <input type="text" id="register-username" placeholder="Käyttäjänimi">
+            <input type="email" id="register-email" placeholder="Email">
+            <input type="password" id="register-password" placeholder="Salasana">
+
+            <button class="secondary-btn" id="register-btn">
+                Rekisteröidy
+            </button>
+
+        </div>
+
+    </main>
+
+    <script type="module" src="/src/js/auth.js"></script>
+
+</body>
+
+</html>

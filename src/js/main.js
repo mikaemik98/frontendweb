@@ -1,6 +1,12 @@
 import '../css/style.css';
 import '../css/mobile.css';
 
+const user = JSON.parse(localStorage.getItem('user'));
+
+if (user) {
+  document.getElementById('username-display').textContent = user.username;
+}
+
 /* mokki dataa */
 const lastWorkout = {name: 'Juoksu 5 km', date: 'Eilen'};
 const weight = {kg: 78.2, change: '-0.4 kg'};

@@ -1,7 +1,7 @@
-import '../css/api.css';
-import {getItems} from './items.js';
+//import '../css/api.css';
+//import {getItems} from './items.js';
 
-console.log('Skripti starttaa');
+//console.log('Skripti starttaa');
 
 //sync a async ajatus ja demo
 /* function synchronousFunction() {
@@ -82,8 +82,22 @@ console.log('3');
 //getItems();
 
 //hakekaa nappula
-const getItemsBtn = document.querySelector('.get_items');
-getItemsBtn.addEventListener('click', getItems);
+//const getItemsBtn = document.querySelector('.get_items');
+//getItemsBtn.addEventListener('click', getItems);
 //lisätkää kuuntelija ja suorittakaa klikatessa get items funktio
 
 //siirretään varsinainen fetch omaksi geneeriseksi funktioksi
+
+const BASE_URL = 'http://localhost:3000/api';
+
+export const apiPost = async (endpoint, data) => {
+  const response = await fetch(BASE_URL + endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  return await response.json();
+};

@@ -279,6 +279,80 @@ main {
   box-shadow: var(--card-shadow);
 }
 
+/* login sivu*/
+.auth-wrapper {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 30px;
+}
+
+.auth-card input {
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 2px solid #ddd;
+  font-size: 1rem;
+}
+
+.auth-card:hover {
+  transform: none;
+  box-shadow: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-btn:hover {
+  background: var(--dark);
+}
+
+.secondary-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.secondary-btn:hover{
+  background: var(--dark);
+}
+
+.auth-divider {
+  text-align: center;
+}
+
+/* .auth-wrapper {
+  background-image: url('/img/moment.jpg');
+  background-size: cover;
+  background-position: center;
+}
+ */
+
+.auth-card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+/* login loppuu*/
+
 footer {
   background-color: var(--primary);
   margin-top: 50px;
