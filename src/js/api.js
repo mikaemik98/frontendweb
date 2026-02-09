@@ -1,7 +1,7 @@
 //import '../css/api.css';
-//import {getItems} from './items.js';
+import {getItems, getItemById, deleteItemById, addItem} from './items.js';
 
-//console.log('Skripti starttaa');
+console.log('Skripti starttaa');
 
 //sync a async ajatus ja demo
 /* function synchronousFunction() {
@@ -76,14 +76,25 @@ console.log('3');
     console.error('Virhe', error);
   }
 };
+consoleLogItems();
+
+getItems();
+
  */
-//consoleLogItems();
-
-//getItems();
-
 //hakekaa nappula
-//const getItemsBtn = document.querySelector('.get_items');
-//getItemsBtn.addEventListener('click', getItems);
+/* const getItemsBtn = document.querySelector('.get_items');
+getItemsBtn.addEventListener('click', getItems);
+
+const getForm = document.querySelector('.get-item-form');
+getForm.addEventListener('submit', getItemById);
+
+const deleteBtn = document.querySelector('.delete-item');
+deleteBtn.addEventListener('click', deleteItemById);
+
+//etsitään formi, ei itse nappulaa ja tutkitaan SUBMIT eventiä
+const addItemForm = document.querySelector('.add-item-form');
+addItemForm.addEventListener('submit', addItem);
+ */
 //lisätkää kuuntelija ja suorittakaa klikatessa get items funktio
 
 //siirretään varsinainen fetch omaksi geneeriseksi funktioksi
