@@ -8,6 +8,16 @@ if (loginBtn) {
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
 
+    if (!username || !password) {
+      alert('Please enter username and password');
+      return;
+    }
+
+    if (password.length < 4) {
+      alert('Password must be at least 4 characters');
+      return;
+    }
+
     const result = await apiPost('/users/login', {
       username,
       password,
@@ -30,6 +40,21 @@ if (registerBtn) {
     const username = document.getElementById('register-username').value;
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
+
+    if (!username || !password) {
+      alert('Please enter username and password');
+      return;
+    }
+
+    if (!email.includes('@')) {
+      alert('Virheellinen email');
+      return;
+    }
+
+    if (password.length < 4) {
+      alert('Password must be at least 4 characters');
+      return;
+    }
 
     const result = await apiPost('/users', {
       username,
@@ -57,6 +82,8 @@ const logoutBtn = document.getElementById('logout-btn');
 
 if (logoutBtn) {
   logoutBtn.onclick = () => {
+    const confirmedLogout = confirm('Halautko varmasti kirjautua ulos?');
+    if (!confirmedLogout) return;
     localStorage.removeItem('user');
     window.location.href = 'login.html';
   };
