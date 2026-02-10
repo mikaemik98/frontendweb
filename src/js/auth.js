@@ -1,10 +1,12 @@
 import {apiPost} from './api.js';
 
-// LOGIN
+//LOGIN
+//haetaan login button
 const loginBtn = document.getElementById('login-btn');
 
 if (loginBtn) {
   loginBtn.onclick = async () => {
+    //haetaan käyttäjän syöttämät tiedot
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
 
@@ -18,6 +20,7 @@ if (loginBtn) {
       return;
     }
 
+    //lähetetään tiedot BE
     const result = await apiPost('/users/login', {
       username,
       password,
@@ -25,6 +28,7 @@ if (loginBtn) {
 
     if (result.user) {
       localStorage.setItem('user', JSON.stringify(result.user));
+      //jos kirjautuminen onnistui siirrytään pääsivulle
       window.location.href = 'index.html';
     } else {
       alert('Login failed');
@@ -32,7 +36,7 @@ if (loginBtn) {
   };
 }
 
-// REGISTER
+//REGISTER
 const registerBtn = document.getElementById('register-btn');
 
 if (registerBtn) {
@@ -64,6 +68,11 @@ if (registerBtn) {
 
     if (result.message) {
       alert('Käyttäjä luotu!');
+
+      //nollaa kentät
+      document.getElementById('register-username').value = '';
+      document.getElementById('register-email').value = '';
+      document.getElementById('register-password').value = '';
     } else {
       alert(result.error || 'Register failed');
     }
@@ -84,7 +93,9 @@ if (logoutBtn) {
   logoutBtn.onclick = () => {
     const confirmedLogout = confirm('Halautko varmasti kirjautua ulos?');
     if (!confirmedLogout) return;
+    //poistetaan käyttäjä locaclstoragesta
     localStorage.removeItem('user');
+    //siirrytään login sivulle
     window.location.href = 'login.html';
   };
 }

@@ -9,7 +9,7 @@
 }
 
 /*navigaatio mobiili laitteella*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .navbar {
     flex-wrap: wrap;
     justify-content: space-between;

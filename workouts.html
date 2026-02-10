@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>HealthDiary</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <h2 class="logo">HealthDiary</h2>
+        <nav>
+          <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#diary">Diary</a></li>
+            <li><a href="workouts.html">Workouts</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="bmi.html">Progress</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle">
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <main class="dashboard">
+      <h1>Workouts</h1>
+        <header class="dashboardheader">
+          <h1>Hei, <span id="username"></span></h1>
+          <p>Lisää ja tarkastele treenejäsi</p>
+        </header>
+      <button id="add-workout-btn">Add Workout</button>
+
+      <div id="workout-modal" class="modal modal-hidden">
+        <div class="modal-content">
+          <h2>Add workout</h2>
+
+          <input id="exercise" placeholder="Exercise" />
+          <input id="weight" placeholder="Weight (kg)" type="number" step="0.5" />
+          <input id="reps" placeholder="Reps" type="number" />
+          <input id="sets" placeholder="Sets" type="number" />
+
+          <div style="display:flex; gap:10px; margin-top:12px;">
+            <button id="save-workout">Save</button>
+            <button id="close-workout" type="button">Cancel</button>
+        </div>
+      </div>
+      </div>
+
+      <div id="workout-list"></div>
+
+      <div id="cardworkout" class="card workout-card">
+        <p></p>
+        <span></span>
+      </div>
+
+      <div id="cardweight" class="card workout-card">
+        <p></p>
+        <span></span>
+      </div>
+
+      <div id="cardgoals" class="card workout-card">
+        <p></p>
+        <span></span>
+      </div>
+      <ul id="activityfeed"></ul>
+    </main>
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="/src/js/auth.js"></script>
+    <script type="module" src="/src/js/workouts.js"></script>
+  </body>
+</html>

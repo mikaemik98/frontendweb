@@ -101,13 +101,50 @@ addItemForm.addEventListener('submit', addItem);
 
 const BASE_URL = 'http://localhost:3000/api';
 
+export const apiGet = async (endpoint) => {
+  const response = await fetch(BASE_URL + endpoint);
+  const text = await response.text();
+
+  if (!response.ok) {
+    throw new Error(
+      `GET ${endpoint} failed (${response.status}) ${text.slice(0, 120)}`
+    );
+  }
+  return JSON.parse(text);
+};
+
 export const apiPost = async (endpoint, data) => {
   const response = await fetch(BASE_URL + endpoint, {
     method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data),
+  });
+
+  const text = await response.text();
+  const result = text ? JSON.parse(text) : {};
+
+  if (!response.ok) {
+    throw new Error(result.error || result.message || 'API error');
+  }
+
+  return result;
+};
+
+export const apiPut = async (endpoint, data) => {
+  const response = await fetch(BASE_URL + endpoint, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
+  });
+
+  return await response.json();
+};
+
+export const apiDelete = async (endpoint) => {
+  const response = await fetch(BASE_URL + endpoint, {
+    method: 'DELETE',
   });
 
   return await response.json();

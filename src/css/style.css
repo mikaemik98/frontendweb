@@ -353,6 +353,55 @@ main {
 }
 /* login loppuu*/
 
+.modal.modal-hidden {display: none;}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  width: min(520px, 92vw);
+  background: white;
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+}
+
+#add-workout-btn{
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+  width: 50%;
+}
+#add-workout-btn:hover{
+  background: var(--dark);
+}
+
+#exercise {
+  background: var(--light);
+  padding: 10px;
+  border-radius: var(--radius);
+  border: none;
+}
+
+/*workout kortit*/
+.workout-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border: 12px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(10px);
+}
+
 footer {
   background-color: var(--primary);
   margin-top: 50px;
