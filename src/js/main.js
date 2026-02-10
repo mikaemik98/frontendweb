@@ -1,8 +1,14 @@
+//dashboard-sivun logiikka
+//näyttää kirjautuneen käyttäjän nimen
+//hakee be käyttäjän viimeisimmät workoutit ja diary entries
+//täyttää koriti ja feedin
+
 import '../css/style.css';
 import '../css/mobile.css';
 
 import {apiGet} from './api.js';
 
+//haetaan kirjautunut käyttäjä localStoragesta
 const user = JSON.parse(localStorage.getItem('user'));
 
 if (user) {
@@ -18,9 +24,10 @@ menuToggle.addEventListener('click', () => {
   menuToggle.classList.toggle('open');
 });
 
-//dashboard data
+//dashboard datan haku
 const loadDashboard = async () => {
   try {
+    //jos ei ole kirjautun, ohjataan login-sivulle
     if (!user) {
       window.location.href = 'login.html';
       return;
@@ -37,6 +44,7 @@ const loadDashboard = async () => {
       document.getElementById('cardworkout').querySelector('span').textContent =
         lastWorkout.workout_date;
 
+      //päivämäärän muotoilu
       const formatDate = (dateStr) => {
         return new Date(dateStr).toLocaleDateString('fi-FI');
       };

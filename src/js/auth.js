@@ -1,3 +1,6 @@
+//kirjautuminen, rekisteröinti, logout
+//login onnistuu -> tallennetaan user localStorageen, pysyy kirjautuneena sivun reloadeissa
+
 import {apiPost} from './api.js';
 
 //LOGIN
@@ -10,6 +13,7 @@ if (loginBtn) {
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
 
+    //validointi enne API-kutsua
     if (!username || !password) {
       alert('Please enter username and password');
       return;
@@ -26,6 +30,7 @@ if (loginBtn) {
       password,
     });
 
+    //be palauttaa {message, user}
     if (result.user) {
       localStorage.setItem('user', JSON.stringify(result.user));
       //jos kirjautuminen onnistui siirrytään pääsivulle
@@ -45,6 +50,7 @@ if (registerBtn) {
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
 
+    //validoi fe:ssä
     if (!username || !password) {
       alert('Please enter username and password');
       return;
@@ -60,6 +66,7 @@ if (registerBtn) {
       return;
     }
 
+    //luodaan uusi käyttäjä
     const result = await apiPost('/users', {
       username,
       email,
@@ -86,7 +93,8 @@ if (!user) {
   window.location.href = 'login.html';
 } */
 
-// logout button toiminto
+//logout button toiminto
+//poistetaan localStorage ja ohjataan login-sivulle
 const logoutBtn = document.getElementById('logout-btn');
 
 if (logoutBtn) {

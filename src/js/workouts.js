@@ -1,14 +1,21 @@
+//workouts-sivun logiikka
+//hakee kirjautuneen käyttäjän workoutit
+//näyttää ne listana
+//avaa modaalin ja lähettää uuden workoutin backendille
+//tyhjentää kentät onnistuneen tallennuksen jälkeen
+
 import {apiGet, apiPost} from './api.js';
 
 const workoutList = document.getElementById('workout-list');
 const workoutModal = document.getElementById('workout-modal');
 
 const user = JSON.parse(localStorage.getItem('user'));
+//jos käyttäjä ei ole kirjautun -> login
 if (!user) {
   window.location.href = 'login.html';
 }
 
-//load workouts
+//load workouts ja renderöi listaan
 const loadWorkouts = async () => {
   const workouts = await apiGet(`/workouts/user/${user.user_id}`);
   workoutList.innerHTML = '';
@@ -32,10 +39,12 @@ document.getElementById('add-workout-btn').onclick = () => {
   workoutModal.classList.remove('modal-hidden');
 };
 
+//sulje modaali (cancel)
 document.getElementById('close-workout').onclick = () => {
   workoutModal.classList.add('modal-hidden');
 };
 
+//sulje modaali taustaa klikaamalla
 workoutModal.addEventListener('click', (e) => {
   if (e.target === workoutModal) workoutModal.classList.add('modal-hidden');
 });
@@ -53,11 +62,13 @@ document.getElementById('save-workout').onclick = async () => {
     const reps = repsInput.value;
     const sets = setsInput.value;
 
+    //vähintään exercise vaaditaan
     if (!exercise) {
       alert('Please enter an exercise name');
       return;
     }
 
+    //lähetetään backendille
     await apiPost('/workouts', {
       user_id: user.user_id,
       exercise,

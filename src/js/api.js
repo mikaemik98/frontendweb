@@ -99,10 +99,14 @@ addItemForm.addEventListener('submit', addItem);
 
 //siirretään varsinainen fetch omaksi geneeriseksi funktioksi
 
+//yleinen tiedosto API-kutsuille
 const BASE_URL = 'http://localhost:3000/api';
 
+//GET (listat, yksittäiset resurssit)
 export const apiGet = async (endpoint) => {
   const response = await fetch(BASE_URL + endpoint);
+
+  //luetaan teksti ensin, be voi palauttaa HTML esim 404 jolloin JSON.parse kaatuu
   const text = await response.text();
 
   if (!response.ok) {
@@ -113,6 +117,7 @@ export const apiGet = async (endpoint) => {
   return JSON.parse(text);
 };
 
+//POST (login, register, uusi workout, uusi diary entry)
 export const apiPost = async (endpoint, data) => {
   const response = await fetch(BASE_URL + endpoint, {
     method: 'POST',
@@ -130,6 +135,7 @@ export const apiPost = async (endpoint, data) => {
   return result;
 };
 
+//PUT päivitetään olemassa olevaa dataa
 export const apiPut = async (endpoint, data) => {
   const response = await fetch(BASE_URL + endpoint, {
     method: 'PUT',
@@ -142,6 +148,7 @@ export const apiPut = async (endpoint, data) => {
   return await response.json();
 };
 
+//DELETE
 export const apiDelete = async (endpoint) => {
   const response = await fetch(BASE_URL + endpoint, {
     method: 'DELETE',
