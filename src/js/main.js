@@ -8,63 +8,88 @@ import '../css/mobile.css';
 
 import {apiGet} from './api.js';
 
-//haetaan kirjautunut käyttäjä localStoragesta
-const user = JSON.parse(localStorage.getItem('user'));
+// Pieni apufunktio päiväyksen siistimiseen (2026-02-09T22:00:00.000Z -> 09.02.2026)
+const formatDate = (value) => {
+  if (!value) return '';
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return String(value);
+  return d.toLocaleDateString('fi-FI'); // esim. 9.2.2026
+};
 
-if (user) {
-  document.getElementById('username').textContent = user.username;
-}
-
-// Navigaation toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.navbar nav');
-
-menuToggle.addEventListener('click', () => {
-  nav.classList.toggle('active');
-  menuToggle.classList.toggle('open');
-});
-
-//dashboard datan haku
-const loadDashboard = async () => {
+// 1) Tarkista token (jos ei ok -> ulos ja login-sivulle)
+const checkAuth = async () => {
   try {
-    //jos ei ole kirjautun, ohjataan login-sivulle
-    if (!user) {
-      window.location.href = 'login.html';
-      return;
-    }
-    //haetaan workoutit be
-    const workouts = await apiGet(`/workouts/user/${user.user_id}`);
+    const me = await apiGet('/auth/me'); // vaatii Bearer tokenin
+    return me.user; // palautetaan user tokenista
+  } catch (err) {
+    // token puuttuu / vanhentunut / virheellinen
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
 
-    if (workouts.length > 0) {
+    // jos ollaan jo login-sivulla, ei redirect loop
+    if (!window.location.pathname.endsWith('login.html')) {
+      window.location.href = 'login.html';
+    }
+    return null;
+  }
+};
+
+// 2) Näytä käyttäjän nimi jos elementti löytyy
+const setUsername = (user) => {
+  const usernameEl = document.getElementById('username');
+  if (user && usernameEl) {
+    usernameEl.textContent = user.username;
+  }
+};
+
+// 3) Hamburger-nav (vain jos elementit löytyy)
+const initNavToggle = () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.navbar nav');
+
+  if (!menuToggle || !nav) return;
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+  });
+};
+
+// 4) Dashboardin kortit (vain jos dashboard-elementit löytyy)
+const loadDashboard = async (user) => {
+  const cardWorkout = document.getElementById('cardworkout');
+  const feedList = document.getElementById('activityfeed');
+
+  // jos ei olla dashboard-sivulla -> älä tee mitään
+  if (!cardWorkout || !feedList) return;
+
+  try {
+    // viimeisin workout
+    const workouts = await apiGet(`/workouts/user/${user.user_id}`);
+    if (Array.isArray(workouts) && workouts.length > 0) {
       const lastWorkout = workouts[0];
 
-      document.getElementById('cardworkout').querySelector('p').textContent =
-        lastWorkout.exercise;
+      const p = cardWorkout.querySelector('p');
+      const s = cardWorkout.querySelector('span');
 
-      document.getElementById('cardworkout').querySelector('span').textContent =
-        lastWorkout.workout_date;
-
-      //päivämäärän muotoilu
-      const formatDate = (dateStr) => {
-        return new Date(dateStr).toLocaleDateString('fi-FI');
-      };
-
-      document.querySelector('#cardworkout span').textContent = formatDate(
-        lastWorkout.workout_date
-      );
+      if (p) {
+        // näytä myös setit/reps/paino
+        const w = lastWorkout.weight_kg ?? '-';
+        const reps = lastWorkout.reps ?? '-';
+        const sets = lastWorkout.sets ?? '-';
+        p.textContent = `${lastWorkout.exercise} (${sets} x ${reps}, ${w} kg)`;
+      }
+      if (s) s.textContent = formatDate(lastWorkout.workout_date);
     }
 
-    //haetaan diary entries
-    const entries = await apiGet(`/entries/user/${user.user_id}`);
+    // viimeisin diary entry feediin
+    const entries = await apiGet('/entries/me');
+    feedList.innerHTML = '';
 
-    if (entries.length > 0) {
+    if (Array.isArray(entries) && entries.length > 0) {
       const lastEntry = entries[0];
-
-      const feedList = document.getElementById('activityfeed');
-
       const li = document.createElement('li');
-      li.textContent = `📓 ${lastEntry.notes}`;
-
+      li.textContent = `📓 ${lastEntry.notes ?? ''}`;
       feedList.appendChild(li);
     }
   } catch (error) {
@@ -72,7 +97,23 @@ const loadDashboard = async () => {
   }
 };
 
-loadDashboard();
+// --- PÄÄSUORITUS ---
+initNavToggle();
+
+const run = async () => {
+  const authedUser = await checkAuth();
+  if (!authedUser) return;
+
+  // (halutessasi voit käyttää tätä useria kaikkialla)
+  setUsername(authedUser);
+
+  // jos haluat käyttää myös localStorage-useria, ok – mutta tokenista tuleva on varmempi
+  // const user = JSON.parse(localStorage.getItem('user')) || authedUser;
+
+  await loadDashboard(authedUser);
+};
+
+run();
 
 /* // Täytä kortit
 document.getElementById('cardworkout').querySelector('p').textContent =

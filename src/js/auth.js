@@ -8,35 +8,21 @@ import {apiPost} from './api.js';
 const loginBtn = document.getElementById('login-btn');
 
 if (loginBtn) {
-  loginBtn.onclick = async () => {
-    //haetaan käyttäjän syöttämät tiedot
-    const username = document.getElementById('login-username').value;
-    const password = document.getElementById('login-password').value;
+  loginBtn.onclick = async (e) => {
+    e.preventDefault();
+    try {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
 
-    //validointi enne API-kutsua
-    if (!username || !password) {
-      alert('Please enter username and password');
-      return;
-    }
+      const result = await apiPost('/auth/login', {username, password});
 
-    if (password.length < 4) {
-      alert('Password must be at least 4 characters');
-      return;
-    }
-
-    //lähetetään tiedot BE
-    const result = await apiPost('/users/login', {
-      username,
-      password,
-    });
-
-    //be palauttaa {message, user}
-    if (result.user) {
       localStorage.setItem('user', JSON.stringify(result.user));
-      //jos kirjautuminen onnistui siirrytään pääsivulle
+      localStorage.setItem('token', result.token);
+
       window.location.href = 'index.html';
-    } else {
-      alert('Login failed');
+    } catch (err) {
+      console.error(err);
+      alert('Login epäonnistui');
     }
   };
 }
@@ -103,6 +89,7 @@ if (logoutBtn) {
     if (!confirmedLogout) return;
     //poistetaan käyttäjä locaclstoragesta
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     //siirrytään login sivulle
     window.location.href = 'login.html';
   };

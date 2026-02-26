@@ -102,26 +102,46 @@ addItemForm.addEventListener('submit', addItem);
 //yleinen tiedosto API-kutsuille
 const BASE_URL = 'http://localhost:3000/api';
 
+const getToken = () => localStorage.getItem('token');
+
+const authHeaders = () => {
+  const token = getToken();
+  //console.log('token?', token);
+  return token ? {Authorization: `Bearer ${token}`} : {};
+};
+
 //GET (listat, yksittäiset resurssit)
 export const apiGet = async (endpoint) => {
-  const response = await fetch(BASE_URL + endpoint);
+  const response = await fetch(BASE_URL + endpoint, {
+    headers: {...authHeaders()},
+    cache: 'no-store',
+  });
 
-  //luetaan teksti ensin, be voi palauttaa HTML esim 404 jolloin JSON.parse kaatuu
   const text = await response.text();
+  let data = {};
+  try {
+    data = text ? JSON.parse(text) : {};
+  } catch {}
 
   if (!response.ok) {
-    throw new Error(
+    const err = new Error(
       `GET ${endpoint} failed (${response.status}) ${text.slice(0, 120)}`
     );
+    err.status = response.status; // <<< tärkeä
+    err.body = data; // <<< kätevä
+    throw err;
   }
-  return JSON.parse(text);
+  return text ? JSON.parse(text) : {};
 };
 
 //POST (login, register, uusi workout, uusi diary entry)
 export const apiPost = async (endpoint, data) => {
   const response = await fetch(BASE_URL + endpoint, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      'Content-Type': 'application/json',
+      ...authHeaders(),
+    },
     body: JSON.stringify(data),
   });
 
@@ -141,18 +161,34 @@ export const apiPut = async (endpoint, data) => {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      ...authHeaders(),
     },
     body: JSON.stringify(data),
   });
 
-  return await response.json();
+  const text = await response.text();
+  if (!response.ok) {
+    throw new Error(
+      `PUT ${endpoint} failed (${response.status}) ${text.slice(0, 120)}`
+    );
+  }
+  return text ? JSON.parse(text) : {};
 };
 
 //DELETE
 export const apiDelete = async (endpoint) => {
   const response = await fetch(BASE_URL + endpoint, {
     method: 'DELETE',
+    headers: {
+      ...authHeaders(),
+    },
   });
 
-  return await response.json();
+  const text = await response.text();
+  if (!response.ok) {
+    throw new Error(
+      `DELETE ${endpoint} failed (${response.status}) ${text.slice(0, 120)}`
+    );
+  }
+  return text ? JSON.parse(text) : {};
 };

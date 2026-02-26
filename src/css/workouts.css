@@ -1,0 +1,246 @@
+.workouts-page {
+    max-width: 1200px;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.page-header h1 {
+    margin: 0;
+}
+
+.page-header p {
+    margin: 6px 0 0;
+    color: #457b9d;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pill {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 999px;
+    padding: 10px 14px;
+    box-shadow: var(--card-shadow);
+}
+
+.cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 26px;
+}
+
+.stat-card h3 {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+    color: #457b9d;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.stat-main {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.stat-sub {
+    display: block;
+    margin-top: 6px;
+    color: #6c757d;
+}
+
+.stat-extra {
+    margin-top: 10px;
+    color: #1d3557;
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+.workouts-section .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.workouts-section h2 {
+    margin: 0;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+    border: 1px solid rgba(29, 53, 87, 0.15);
+    border-radius: 12px;
+    padding: 10px 12px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.input:focus {
+    border-color: rgba(105, 179, 200, 0.9);
+    box-shadow: 0 0 0 4px rgba(105, 179, 200, 0.2);
+}
+
+.btn {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    background: white;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.icon-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.workout-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.workout-card {
+    background: var(--light);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.workout-card h3 {
+    margin: 0;
+}
+
+.workout-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: #457b9d;
+    font-weight: 600;
+}
+
+.workout-actions {
+    margin-top: 4px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.badge {
+    background: rgba(105, 179, 200, 0.15);
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+.empty-state {
+    margin-top: 16px;
+    color: #457b9d;
+}
+
+.hidden {
+    display: none;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(29, 53, 87, 0.45);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.modal-hidden {
+    display: none;
+}
+
+.modal-content {
+    width: min(560px, 100%);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+    padding: 18px;
+}
+
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.label {
+    display: block;
+    margin: 10px 0 6px;
+    font-weight: 700;
+    color: #1d3557;
+    opacity: 0.9;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .cards-row {
+        grid-template-columns: 1fr;
+    }
+
+    .workout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toolbar {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
