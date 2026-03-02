@@ -1,0 +1,45 @@
+.contact-page {
+    max-width: 900px;
+}
+
+.contact-card {
+    background: var(--light);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 18px;
+    display: grid;
+    gap: 14px;
+    max-width: 520px;
+}
+
+.contact-card label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.contact-card input,
+.contact-card textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(29, 53, 87, 0.15);
+    font: inherit;
+}
+
+.contact-card button {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#contact-dialog {
+    border: none;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--card-shadow);
+}

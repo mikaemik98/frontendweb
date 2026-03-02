@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthDiary - Goals</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h2 class="logo">HealthDiary</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="entries.html">Diary</a></li>
+                    <li><a href="workouts.html">Workouts</a></li>
+                    <li><a href="goals.html">Goals</a></li>
+                    <li><a href="bmi.html">Progress</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle"><span></span></button>
+        </div>
+    </div>
+
+    <main class="dashboard">
+        <header class="dashboardheader">
+            <h1>Goals</h1>
+            <p>Lisää tavoitteita ja seuraa edistymistä</p>
+        </header>
+
+        <button id="add-goal-btn" class="primary-btn">Add goal</button>
+
+        <!-- MODAL -->
+        <div id="goal-modal" class="modal modal-hidden">
+            <div class="modal-content">
+                <h2>New goal</h2>
+
+                <input id="goal_type" placeholder="Goal type (esim. Maastaveto)" />
+                <input id="target_value" type="number" step="0.5" placeholder="Target value (kg)" />
+                <input id="target_date" type="date" />
+
+                <div class="modal-actions">
+                    <button id="save-goal" class="primary-btn">Save</button>
+                    <button id="close-goal" type="button" class="secondary-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="goals-section">
+            <h2>Active goals</h2>
+            <div id="goals-active" class="goals-grid"></div>
+        </section>
+
+        <section class="goals-section">
+            <h2>Completed</h2>
+            <div id="goals-completed" class="goals-grid"></div>
+        </section>
+    </main>
+
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="/src/js/auth.js"></script>
+    <script type="module" src="/src/js/goals.js"></script>
+</body>
+
+</html>

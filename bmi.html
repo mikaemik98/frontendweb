@@ -22,9 +22,9 @@
             <li><a href="index.html">Dashboard</a></li>
             <li><a href="entries.html">Diary</a></li>
             <li><a href="workouts.html">Workouts</a></li>
-            <li><a href="#goals">Goals</a></li>
+            <li><a href="goals.html">Goals</a></li>
             <li><a href="bmi.html">Progress</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="#" id="logout-btn">Logout</a></li>
           </ul>
         </nav>
@@ -77,8 +77,34 @@
           </p>
         </section>
       </div>
+
+      <section class="progress-charts">
+        <h2>Progress</h2>
+      
+        <div class="chart-card">
+          <h3>Weight over time</h3>
+          <canvas id="weightChart"></canvas>
+        </div>
+      
+        <div class="chart-card">
+          <h3>Workouts per week</h3>
+          <canvas id="workoutsChart"></canvas>
+        </div>
+      
+        <div class="stats-row">
+          <div class="stat">
+            <p class="stat-label">Average sleep</p>
+            <p class="stat-value" id="avgSleep">-</p>
+          </div>
+          <div class="stat">
+            <p class="stat-label">Weight change</p>
+            <p class="stat-value" id="weightChange">-</p>
+          </div>
+        </div>
+      </section>
     </main>
     <script type="module" src="/src/js/bmi-start.js"></script>
     <script type="module" src="/src/js/auth.js"></script>
+    <script type="module" src="/src/js/progress.js"></script>
   </body>
 </html>

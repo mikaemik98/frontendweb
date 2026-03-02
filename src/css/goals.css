@@ -1,0 +1,144 @@
+.goals-section {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.goal-card {
+    background: var(--light);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--card-shadow);
+}
+
+.goal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.goal-top h3 {
+    margin: 0;
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.badge-active {
+    background: rgba(105, 179, 200, 0.18);
+    color: var(--dark);
+}
+
+.badge-done {
+    background: rgba(80, 200, 120, 0.18);
+    color: var(--dark);
+}
+
+.goal-meta {
+    margin: 10px 0;
+    color: #457b9d;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.progress {
+    height: 10px;
+    background: var(--secondary);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--primary);
+}
+
+.progress-text {
+    margin: 8px 0 0;
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.goal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.primary-btn,
+.secondary-btn,
+.danger-btn {
+    border: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.secondary-btn {
+    background: rgba(29, 53, 87, 0.08);
+    color: var(--dark);
+}
+
+.danger-btn {
+    background: rgba(220, 53, 69, 0.12);
+}
+
+.empty {
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-hidden {
+    display: none;
+}
+
+.modal-content {
+    width: min(520px, 92vw);
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(29, 53, 87, 0.15);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthDiary - Contact</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h2 class="logo">HealthDiary</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="entries.html">Diary</a></li>
+                    <li><a href="workouts.html">Workouts</a></li>
+                    <li><a href="goals.html">Goals</a></li>
+                    <li><a href="bmi.html">Progress</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle"><span></span></button>
+        </div>
+    </div>
+
+    <main class="dashboard contact-page">
+        <header class="dashboardheader">
+            <h1>Contact</h1>
+            <p>Lähetä viesti (demo-form)</p>
+        </header>
+
+        <form id="contact-form" class="contact-card">
+            <label>
+                Nimi
+                <input id="c-name" required />
+            </label>
+
+            <label>
+                Email
+                <input id="c-email" type="email" required />
+            </label>
+
+            <label>
+                Viesti
+                <textarea id="c-msg" rows="5" required></textarea>
+            </label>
+
+            <button type="submit">Send</button>
+        </form>
+
+        <h3>Contact Information:</h3>
+        <p>Yhteystiedot: <a href="mailto:healthdiary@example.com">healthdiary@example.com</a></p>
+        <p>Puh: 040 123 4567</p>
+        <p>Osoite: HealthDiary Oy, Keskuskatu 123, 00100 Helsinki</p>
+        <dialog id="contact-dialog">
+            <p>Viesti “lähetetty” (demo). Kiitos!</p>
+            <button id="close-dialog" type="button">OK</button>
+        </dialog>
+    </main>
+
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="/src/js/contact.js"></script>
+</body>
+
+</html>

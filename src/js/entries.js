@@ -89,17 +89,17 @@ document.getElementById('save-entry').onclick = async () => {
 
     await apiPost('/entries', {entry_date, mood, weight, sleep_hours, notes});
 
-    // ✅ nollaa kentät
+    // nollaa kentät
     dateEl.value = '';
     moodEl.value = '';
     weightEl.value = '';
     sleepEl.value = '';
     notesEl.value = '';
 
-    // ✅ sulje modaali
+    // sulje modaali
     modal.classList.add('modal-hidden');
 
-    // ✅ päivitä lista
+    // päivitä lista
     await loadEntries();
   } catch (err) {
     console.error(err);

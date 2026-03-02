@@ -5,115 +5,116 @@
 
 import '../css/style.css';
 import '../css/mobile.css';
-
 import {apiGet} from './api.js';
 
-// Pieni apufunktio päiväyksen siistimiseen (2026-02-09T22:00:00.000Z -> 09.02.2026)
-const formatDate = (value) => {
-  if (!value) return '';
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return String(value);
-  return d.toLocaleDateString('fi-FI'); // esim. 9.2.2026
+// ---------- Helpers ----------
+const formatDate = (dateStr) => {
+  if (!dateStr) return '-';
+  const d = new Date(dateStr);
+  return new Intl.DateTimeFormat('fi-FI').format(d);
 };
 
-// 1) Tarkista token (jos ei ok -> ulos ja login-sivulle)
-const checkAuth = async () => {
-  try {
-    const me = await apiGet('/auth/me'); // vaatii Bearer tokenin
-    return me.user; // palautetaan user tokenista
-  } catch (err) {
-    // token puuttuu / vanhentunut / virheellinen
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+// ---------- Auth guard (sivuille joissa vaaditaan kirjautuminen) ----------
+const token = localStorage.getItem('token');
+const user = JSON.parse(localStorage.getItem('user') || 'null');
 
-    // jos ollaan jo login-sivulla, ei redirect loop
-    if (!window.location.pathname.endsWith('login.html')) {
-      window.location.href = 'login.html';
-    }
-    return null;
+// Jos ei tokenia -> login
+// (jos sinulla on myös täysin julkisia sivuja, lisää tähän poikkeuslista)
+if (!token || !user) {
+  // älä redirectaa login.html:stä login.html:ään
+  if (!location.pathname.endsWith('login.html')) {
+    window.location.href = 'login.html';
   }
-};
+}
 
-// 2) Näytä käyttäjän nimi jos elementti löytyy
-const setUsername = (user) => {
-  const usernameEl = document.getElementById('username');
-  if (user && usernameEl) {
-    usernameEl.textContent = user.username;
-  }
-};
+// ---------- Username ----------
+const usernameEl = document.getElementById('username');
+if (user && usernameEl) usernameEl.textContent = user.username;
 
-// 3) Hamburger-nav (vain jos elementit löytyy)
-const initNavToggle = () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.navbar nav');
+// ---------- Navbar toggle ----------
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.navbar nav');
 
-  if (!menuToggle || !nav) return;
-
+if (menuToggle && nav) {
   menuToggle.addEventListener('click', () => {
     nav.classList.toggle('active');
     menuToggle.classList.toggle('open');
   });
-};
+}
 
-// 4) Dashboardin kortit (vain jos dashboard-elementit löytyy)
-const loadDashboard = async (user) => {
+// ---------- Dashboard loader ----------
+const loadDashboard = async () => {
   const cardWorkout = document.getElementById('cardworkout');
+  const cardGoals = document.getElementById('cardgoals');
   const feedList = document.getElementById('activityfeed');
 
-  // jos ei olla dashboard-sivulla -> älä tee mitään
-  if (!cardWorkout || !feedList) return;
+  // Jos ei olla dashboard-sivulla -> ei tehdä mitään
+  if (!cardWorkout || !cardGoals || !feedList) return;
 
+  // Tyhjennä feed aina ensin
+  feedList.innerHTML = '';
+
+  // 1) Viimeisin workout
   try {
-    // viimeisin workout
     const workouts = await apiGet(`/workouts/user/${user.user_id}`);
-    if (Array.isArray(workouts) && workouts.length > 0) {
-      const lastWorkout = workouts[0];
-
-      const p = cardWorkout.querySelector('p');
-      const s = cardWorkout.querySelector('span');
-
-      if (p) {
-        // näytä myös setit/reps/paino
-        const w = lastWorkout.weight_kg ?? '-';
-        const reps = lastWorkout.reps ?? '-';
-        const sets = lastWorkout.sets ?? '-';
-        p.textContent = `${lastWorkout.exercise} (${sets} x ${reps}, ${w} kg)`;
-      }
-      if (s) s.textContent = formatDate(lastWorkout.workout_date);
+    if (workouts.length > 0) {
+      const last = workouts[0];
+      cardWorkout.querySelector('p').textContent = last.exercise ?? '-';
+      cardWorkout.querySelector('span').textContent = formatDate(
+        last.workout_date
+      );
+    } else {
+      cardWorkout.querySelector('p').textContent = 'Ei treenejä';
+      cardWorkout.querySelector('span').textContent = '';
     }
+  } catch (e) {
+    console.error('Workouts fetch failed:', e);
+  }
 
-    // viimeisin diary entry feediin
+  // 2) Viimeisin diary entry (notes feediin)
+  try {
     const entries = await apiGet('/entries/me');
-    feedList.innerHTML = '';
-
-    if (Array.isArray(entries) && entries.length > 0) {
+    if (entries.length > 0) {
       const lastEntry = entries[0];
       const li = document.createElement('li');
-      li.textContent = `📓 ${lastEntry.notes ?? ''}`;
+      li.textContent = `📓 ${formatDate(lastEntry.entry_date)}: ${lastEntry.notes ?? ''}`;
+      feedList.appendChild(li);
+    } else {
+      const li = document.createElement('li');
+      li.textContent = 'Ei merkintöjä';
       feedList.appendChild(li);
     }
-  } catch (error) {
-    console.error('Dashboard load error:', error);
+  } catch (e) {
+    console.error('Entries fetch failed:', e);
+  }
+
+  // 3) Goals-kortti
+  try {
+    const goals = await apiGet('/goals/me');
+    if (goals.length > 0) {
+      const active = goals.find((g) => g.status !== 'completed') || goals[0];
+      const cur = Number(active.current_value ?? 0);
+      const tar =
+        active.target_value == null ? null : Number(active.target_value);
+      const pct = tar ? Math.min(100, Math.round((cur / tar) * 100)) : 0;
+
+      cardGoals.querySelector('p').textContent = tar
+        ? `${active.goal_type}: ${cur}/${tar}`
+        : `${active.goal_type}`;
+      cardGoals.querySelector('span').textContent = tar
+        ? `${pct}%`
+        : (active.status ?? 'active');
+    } else {
+      cardGoals.querySelector('p').textContent = 'Ei tavoitteita';
+      cardGoals.querySelector('span').textContent = '';
+    }
+  } catch (e) {
+    console.error('Goals fetch failed:', e);
   }
 };
 
-// --- PÄÄSUORITUS ---
-initNavToggle();
-
-const run = async () => {
-  const authedUser = await checkAuth();
-  if (!authedUser) return;
-
-  // (halutessasi voit käyttää tätä useria kaikkialla)
-  setUsername(authedUser);
-
-  // jos haluat käyttää myös localStorage-useria, ok – mutta tokenista tuleva on varmempi
-  // const user = JSON.parse(localStorage.getItem('user')) || authedUser;
-
-  await loadDashboard(authedUser);
-};
-
-run();
+// Aja vain dashboardissa
+loadDashboard();
 
 /* // Täytä kortit
 document.getElementById('cardworkout').querySelector('p').textContent =
