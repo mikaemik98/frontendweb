@@ -1,3 +1,5 @@
+///Goals-sivu: listaa active + completed goalit, laskee progressin, mahdollistaa lisäyksen ja poistamisen.
+
 import '../css/goals.css';
 import {apiGet, apiPost, apiDelete} from './api.js';
 

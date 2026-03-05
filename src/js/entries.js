@@ -1,3 +1,11 @@
+/**
+ * Diary-sivu: hakee /entries/me, renderöi kortit (Flex/Grid), modaali lisäämiseen (POST /entries).
+ *
+ * Huom:
+ * - Frontissa token tallennetaan localStorageen ja lähetetään Authorization-headerissa.
+ * - Backissa req.user asetetaan authentication-middlewarellä (JWT).
+ */
+
 import '../css/entries.css';
 
 import {apiGet, apiPost} from './api.js';

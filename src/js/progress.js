@@ -1,3 +1,5 @@
+///Progress-sivu: hakee dataa ja piirtää Chart.js:llä trendit (esim. paino), + summary-metriikat.
+
 import '../css/progress.css';
 import {apiGet} from './api.js';
 import Chart from 'chart.js/auto';
@@ -8,7 +10,7 @@ const formatDate = (dateStr) => {
 };
 
 const getWeekKey = (dateStr) => {
-  // yksinkertainen “YYYY-WW” viikkoavaimeksi
+  // yksinkertainen “YYYY-WW”
   const d = new Date(dateStr);
   const first = new Date(d.getFullYear(), 0, 1);
   const days = Math.floor((d - first) / 86400000);
@@ -24,7 +26,7 @@ const loadProgress = async () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const workouts = await apiGet(`/workouts/user/${user.user_id}`);
 
-  // ----- WEIGHT CHART -----
+  // weight chart
   const weightEntries = entries
     .filter((e) => e.weight !== null && e.weight !== undefined)
     .sort((a, b) => new Date(a.entry_date) - new Date(b.entry_date));
@@ -60,7 +62,7 @@ const loadProgress = async () => {
     weightChangeEl.textContent = `${diff > 0 ? '+' : ''}${diff.toFixed(1)} kg`;
   }
 
-  // ----- AVG SLEEP -----
+  // avg sleep
   const sleeps = entries
     .map((e) => e.sleep_hours)
     .filter((x) => x !== null && x !== undefined)
@@ -72,7 +74,7 @@ const loadProgress = async () => {
     avgSleepEl.textContent = `${avg.toFixed(1)} h`;
   }
 
-  // ----- WORKOUTS PER WEEK -----
+  // workouts per week
   const byWeek = {};
   workouts.forEach((w) => {
     const key = getWeekKey(w.workout_date);

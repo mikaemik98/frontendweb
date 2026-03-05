@@ -42,13 +42,18 @@ if (registerBtn) {
       return;
     }
 
+    if (username.length < 3) {
+      alert('Username must be at least 3 characters');
+      return;
+    }
+
     if (!email.includes('@')) {
       alert('Virheellinen email');
       return;
     }
 
-    if (password.length < 4) {
-      alert('Password must be at least 4 characters');
+    if (password.length < 8) {
+      alert('Password must be at least 8 characters');
       return;
     }
 

@@ -7,14 +7,14 @@ import '../css/style.css';
 import '../css/mobile.css';
 import {apiGet} from './api.js';
 
-// ---------- Helpers ----------
+// date formatting helper
 const formatDate = (dateStr) => {
   if (!dateStr) return '-';
   const d = new Date(dateStr);
   return new Intl.DateTimeFormat('fi-FI').format(d);
 };
 
-// ---------- Auth guard (sivuille joissa vaaditaan kirjautuminen) ----------
+// auth check & navbar username
 const token = localStorage.getItem('token');
 const user = JSON.parse(localStorage.getItem('user') || 'null');
 
@@ -27,11 +27,11 @@ if (!token || !user) {
   }
 }
 
-// ---------- Username ----------
+// username navbarissa
 const usernameEl = document.getElementById('username');
 if (user && usernameEl) usernameEl.textContent = user.username;
 
-// ---------- Navbar toggle ----------
+// navbar toggle mobilelle
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.navbar nav');
 
@@ -42,7 +42,7 @@ if (menuToggle && nav) {
   });
 }
 
-// ---------- Dashboard loader ----------
+// dashboard-sivun logiikka
 const loadDashboard = async () => {
   const cardWorkout = document.getElementById('cardworkout');
   const cardGoals = document.getElementById('cardgoals');
