@@ -78,29 +78,38 @@
         </section>
       </div>
 
-      <section class="progress-charts">
-        <h2>Progress</h2>
-      
-        <div class="chart-card">
-          <h3>Weight over time</h3>
-          <canvas id="weightChart"></canvas>
-        </div>
-      
-        <div class="chart-card">
-          <h3>Workouts per week</h3>
-          <canvas id="workoutsChart"></canvas>
-        </div>
-      
-        <div class="stats-row">
-          <div class="stat">
-            <p class="stat-label">Average sleep</p>
-            <p class="stat-value" id="avgSleep">-</p>
-          </div>
-          <div class="stat">
-            <p class="stat-label">Weight change</p>
-            <p class="stat-value" id="weightChange">-</p>
-          </div>
-        </div>
+      <section class="progress-page">
+        <header class="dashboardheader">
+          <h1>Your progress</h1>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stats-grid">
+            <article class="stat-card">
+              <h3>Weight change</h3>
+              <p id="weightChange">-</p>
+              <span>From first entry</span>
+            </article>
+
+            <article class="stat-card">
+              <h3>Average Sleep</h3>
+              <p id="avgSleep">-</p>
+              <span>Hours per night</span>
+            </article>
+
+            <article class="stat-card">
+              <h3>Total workouts</h3>
+              <p id="workoutCount">-</p>
+              <span>Logged workouts</span>
+            </article>
+
+            <article class="stat-card">
+              <h3>Diary entries</h3>
+              <p id="entryCount">-</p>
+              <span>Total entries</span>
+            </article>
+          </article>
+        </section>
       </section>
     </main>
     <script type="module" src="/src/js/bmi-start.js"></script>

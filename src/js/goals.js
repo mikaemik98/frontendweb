@@ -3,7 +3,7 @@
 import '../css/goals.css';
 import {apiGet, apiPost, apiDelete} from './api.js';
 
-// --- turvallisuus: jos goals.html ei ole auki, älä tee mitään ---
+// turvallisuus: jos goals.html ei ole auki, älä tee mitään
 const activeEl = document.getElementById('goals-active');
 const completedEl = document.getElementById('goals-completed');
 if (!activeEl || !completedEl) {
@@ -97,7 +97,7 @@ if (!activeEl || !completedEl) {
     done.forEach((g) => completedEl.appendChild(renderGoalCard(g)));
   };
 
-  // --- modal open/close ---
+  // modal open/close
   addBtn.onclick = () => modal.classList.remove('modal-hidden');
 
   closeBtn.onclick = () => modal.classList.add('modal-hidden');
@@ -106,7 +106,7 @@ if (!activeEl || !completedEl) {
     if (e.target === modal) modal.classList.add('modal-hidden');
   });
 
-  // --- save ---
+  // save
   saveBtn.onclick = async () => {
     try {
       const goal_type = goalTypeEl.value.trim();

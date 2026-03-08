@@ -10,6 +10,30 @@
     margin-bottom: 18px;
 }
 
+.workout-hero {
+    position: relative;
+    height: 200px;
+    margin-top: 70px;
+    overflow: hidden;
+}
+
+.workout-hero-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/dumbbell.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.65);
+}
+
+.workout-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(29, 53, 87, 0.45);
+}
+
 .page-header h1 {
     margin: 0;
 }

@@ -45,14 +45,17 @@ if (menuToggle && nav) {
 // dashboard-sivun logiikka
 const loadDashboard = async () => {
   const cardWorkout = document.getElementById('cardworkout');
+  const cardWeight = document.getElementById('cardweight');
   const cardGoals = document.getElementById('cardgoals');
   const feedList = document.getElementById('activityfeed');
 
   // Jos ei olla dashboard-sivulla -> ei tehdä mitään
-  if (!cardWorkout || !cardGoals || !feedList) return;
+  if (!cardWorkout || !cardGoals) return;
 
-  // Tyhjennä feed aina ensin
-  feedList.innerHTML = '';
+  //tyhjennä feedin (jos on)
+  if (feedList) {
+    feedList.innerHTML = '';
+  }
 
   // 1) Viimeisin workout
   try {
@@ -71,23 +74,50 @@ const loadDashboard = async () => {
     console.error('Workouts fetch failed:', e);
   }
 
-  // 2) Viimeisin diary entry (notes feediin)
+  //weight
   try {
     const entries = await apiGet('/entries/me');
-    if (entries.length > 0) {
-      const lastEntry = entries[0];
-      const li = document.createElement('li');
-      li.textContent = `📓 ${formatDate(lastEntry.entry_date)}: ${lastEntry.notes ?? ''}`;
-      feedList.appendChild(li);
-    } else {
-      const li = document.createElement('li');
-      li.textContent = 'Ei merkintöjä';
-      feedList.appendChild(li);
+
+    if (entries.length > 0 && cardWeight) {
+      const weightEntries = entries
+        .filter((e) => e.weight !== null && e.weight !== undefined)
+        .sort((a, b) => new Date(b.entry_date) - new Date(a.entry_date));
+
+      if (weightEntries.length > 0) {
+        const lastWeight = weightEntries[0].weight;
+
+        cardWeight.querySelector('.stat-main').textContent = `${lastWeight} kg`;
+
+        cardWeight.querySelector('.stat-sub').textContent = formatDate(
+          weightEntries[0].entry_date
+        );
+      }
     }
   } catch (e) {
-    console.error('Entries fetch failed:', e);
+    console.error('Weight fetch failed:', e);
   }
 
+  // 2) Viimeisin diary entry (notes feediin)
+  if (feedList) {
+    try {
+      const entries = await apiGet('/entries/me');
+
+      if (entries.length > 0) {
+        const lastEntry = entries[0];
+
+        const li = document.createElement('li');
+        li.textContent = `📓 ${formatDate(lastEntry.entry_date)}: ${lastEntry.notes ?? ''}`;
+
+        feedList.appendChild(li);
+      } else {
+        const li = document.createElement('li');
+        li.textContent = 'Ei merkintöjä vielä.';
+        feedList.appendChild(li);
+      }
+    } catch (e) {
+      console.error('Entries fetch failed:', e);
+    }
+  }
   // 3) Goals-kortti
   try {
     const goals = await apiGet('/goals/me');

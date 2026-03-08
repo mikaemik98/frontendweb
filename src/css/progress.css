@@ -1,46 +1,35 @@
-.progress-charts {
-    width: 80%;
-    margin: 30px auto 60px;
-    display: grid;
-    gap: 16px;
+.progress-page {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
 }
 
-.chart-card {
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1 1 220px;
     background: white;
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-    height: 320px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.chart-card canvas {
-    width: 100% !important;
-    height: 240px !important;
+.stat-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.stats-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
+.stat-card p {
+    font-size: 32px;
+    font-weight: 600;
 }
 
-.stat {
-    background: white;
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-}
-
-.stat-label {
-    margin: 0;
-    color: #457b9d;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-.stat-value {
-    margin: 8px 0 0;
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #1d3557;
+.stat-card span {
+    font-size: 14px;
+    color: #666;
 }
