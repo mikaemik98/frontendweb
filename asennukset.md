@@ -6,11 +6,11 @@
 
 | Työkalu | Versio |
 |---|---|
-| Robot Framework | 7.x |
-| Browser Library | 19.x |
-| Requests Library | 2.x |
-| CryptoLibrary | 0.4.x |
-| Robotidy | 4.x |
+| Robot Framework | 7.4.2 |
+| Browser Library | 19.12.5 |
+| Requests Library | 2.32.5 |
+| CryptoLibrary | 0.4.2 |
+| Robotidy | 4.18.0 |
 
 ## Asennusvaiheet
 
@@ -39,9 +39,9 @@ pip install robotframework-tidy
 
 Ajettiin `asennustesti.py`, jonka tuloste:
 ```
-Python: 3.x.x
-Robot Framework: 7.x
-Browser: 19.x
-requests: 2.x
-CryptoLibrary: 0.4.x
+Python: 3.11.5
+Robot Framework: 7.4.2
+Browser: 19.12.5
+requests: 2.32.5
+CryptoLibrary: 0.4.2
 ```
