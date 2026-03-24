@@ -1,0 +1,39 @@
+{"level":30,"time":"2026-03-24T08:48:47.815Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Listening on 127.0.0.1:52750"}
+{"level":30,"time":"2026-03-24T08:48:48.216Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2026-03-24T08:48:48.980Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Adding browser to stack: chromium, version: 145.0.7632.6"}
+{"level":30,"time":"2026-03-24T08:48:48.980Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2026-03-24T08:48:48.980Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"End of node method newBrowser"}
+{"level":30,"time":"2026-03-24T08:48:48.986Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method newPage"}
+{"level":30,"time":"2026-03-24T08:48:48.987Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@ca45917e298ef233fbfb10ead2facfba\"},\"headless\":false,\"_contextStack\":[],\"id\":\"browser=a6430b66-0ade-4e02-bf12-b9e796af766b\"}"}
+{"level":30,"time":"2026-03-24T08:48:49.004Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Setting default timeout for context context=8be71317-a1b4-413c-86d4-d3d6072773db to 10000"}
+{"level":30,"time":"2026-03-24T08:48:49.004Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Changed active context: context=8be71317-a1b4-413c-86d4-d3d6072773db"}
+{"level":30,"time":"2026-03-24T08:48:49.175Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Video path: undefined"}
+{"level":30,"time":"2026-03-24T08:48:49.175Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Changed active page"}
+{"level":30,"time":"2026-03-24T08:48:49.250Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"End of node method newPage"}
+{"level":30,"time":"2026-03-24T08:48:49.257Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-03-24T08:48:49.257Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with id=login-username in page."}
+{"level":30,"time":"2026-03-24T08:48:49.297Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"End of node method fillText"}
+{"level":30,"time":"2026-03-24T08:48:49.302Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-03-24T08:48:49.302Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with id=login-password in page."}
+{"level":30,"time":"2026-03-24T08:48:49.313Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"End of node method fillText"}
+{"level":30,"time":"2026-03-24T08:48:49.319Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method click"}
+{"level":30,"time":"2026-03-24T08:48:49.319Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with id=login-btn in page."}
+{"level":30,"time":"2026-03-24T08:48:49.475Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"End of node method click"}
+{"level":30,"time":"2026-03-24T08:48:49.479Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method click"}
+{"level":30,"time":"2026-03-24T08:48:49.479Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with \"Login\" in page."}
+{"level":30,"time":"2026-03-24T08:48:59.489Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Error of node method  click"}
+================= Original suppressed error =================
+locator.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('text="Login"')[22m
+
+    at internalClick (C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js:12341:19)
+    at async click (C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js:12322:18)
+    at async PlaywrightServer.click (C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js:13635:28) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2026-03-24T08:48:59.495Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method takeScreenshot"}
+{"level":30,"time":"2026-03-24T08:48:59.495Z","pid":27096,"hostname":"LAPTOP-DQE15J93","Take screenshot with options: ":{"path":"C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\screenshot\\fail-screenshot-1.png","fileType":"png","fullPage":false,"timeout":10000,"omitBackground":false}}
+{"level":30,"time":"2026-03-24T08:48:59.574Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"End of node method takeScreenshot"}
+{"level":30,"time":"2026-03-24T08:49:01.046Z","pid":27096,"hostname":"LAPTOP-DQE15J93","msg":"Removed page=c8d360d5-510c-4e4d-90f1-e70e5f6dd990 from context=8be71317-a1b4-413c-86d4-d3d6072773db page stack"}

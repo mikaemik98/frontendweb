@@ -1,6 +1,5 @@
 *** Settings ***
 Library     Browser    auto_closing_level=KEEP
-Resource    Keywords.robot
 
 *** Variables ***
 ${URL}       http://localhost:5173/login.html
