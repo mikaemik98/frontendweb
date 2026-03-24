@@ -1,0 +1,25 @@
+{"level":30,"time":"2026-03-24T09:15:32.615Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Listening on 127.0.0.1:49723"}
+{"level":30,"time":"2026-03-24T09:15:33.010Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method newBrowser"}
+{"level":30,"time":"2026-03-24T09:15:33.824Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Adding browser to stack: chromium, version: 145.0.7632.6"}
+{"level":30,"time":"2026-03-24T09:15:33.824Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Adding 0 contexts to browser"}
+{"level":30,"time":"2026-03-24T09:15:33.824Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"End of node method newBrowser"}
+{"level":30,"time":"2026-03-24T09:15:33.829Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method newPage"}
+{"level":30,"time":"2026-03-24T09:15:33.830Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"currentBrowser: {\"name\":\"chromium\",\"browser\":{\"_type\":\"Browser\",\"_guid\":\"browser@42ccb624984093c9e4d1d90d79047851\"},\"headless\":false,\"_contextStack\":[],\"id\":\"browser=0fe84e49-2c40-4578-a796-61b8b5e3db77\"}"}
+{"level":30,"time":"2026-03-24T09:15:33.842Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Setting default timeout for context context=de77c17e-b6c1-4021-8924-4843f78ff011 to 10000"}
+{"level":30,"time":"2026-03-24T09:15:33.842Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Changed active context: context=de77c17e-b6c1-4021-8924-4843f78ff011"}
+{"level":30,"time":"2026-03-24T09:15:34.017Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Video path: undefined"}
+{"level":30,"time":"2026-03-24T09:15:34.017Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Changed active page"}
+{"level":30,"time":"2026-03-24T09:15:34.085Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"End of node method newPage"}
+{"level":30,"time":"2026-03-24T09:15:34.091Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-03-24T09:15:34.091Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with id=login-username in page."}
+{"level":30,"time":"2026-03-24T09:15:34.130Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"End of node method fillText"}
+{"level":30,"time":"2026-03-24T09:15:34.133Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method fillText"}
+{"level":30,"time":"2026-03-24T09:15:34.133Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with id=login-password in page."}
+{"level":30,"time":"2026-03-24T09:15:34.151Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"End of node method fillText"}
+{"level":30,"time":"2026-03-24T09:15:34.157Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method click"}
+{"level":30,"time":"2026-03-24T09:15:34.157Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with id=login-btn in page."}
+{"level":30,"time":"2026-03-24T09:15:34.297Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"End of node method click"}
+{"level":30,"time":"2026-03-24T09:15:34.299Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Start of node method click"}
+{"level":30,"time":"2026-03-24T09:15:34.300Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Strict mode is enabled, find Locator with \"Kirjaudu\" in page."}
+{"level":30,"time":"2026-03-24T09:15:39.336Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"End of node method click"}
+{"level":30,"time":"2026-03-24T09:15:40.852Z","pid":4164,"hostname":"LAPTOP-DQE15J93","msg":"Removed page=bc5f7abe-383f-4735-9244-eac9becd1a14 from context=de77c17e-b6c1-4021-8924-4843f78ff011 page stack"}

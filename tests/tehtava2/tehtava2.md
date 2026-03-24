@@ -1,6 +1,6 @@
 # Robot framework tehtävä2: Login onnistuu
 
-# Report.html löytyy projektin juuresta tai outputs kansiosta
+# Report.html löytyy [Testiraportti](../../outputs/report.html)
 
 ### Tavoite:
 Testaa, että käyttäjä pystyy kirjautumaan päiväkirja-sovellukseen.
