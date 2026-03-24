@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.5 on win32)" generated="2026-03-24T11:01:17.389053" rpa="false" schemaversion="5">
+<suite id="s1" name="Browser Demo2" source="C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\tests\tehtava2\browser_demo2.robot">
+<test id="s1-t1" name="Login Onnistuu" line="11">
+<kw name="New Browser" owner="Browser">
+<msg time="2026-03-24T11:01:17.638108" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\2e01f470-5e99-44b9-abff-5469280d7d3e"}</msg>
+<msg time="2026-03-24T11:01:17.663520" level="INFO">Starting Browser process C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:52642</msg>
+<msg time="2026-03-24T11:01:19.418919" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\2e01f470-5e99-44b9-abff-5469280d7d3e"}</msg>
+<arg>chromium</arg>
+<arg>headless=No</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-03-24T11:01:17.637044" elapsed="1.782872"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-03-24T11:01:19.705944" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173/login.html</msg>
+<msg time="2026-03-24T11:01:19.705944" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-03-24T11:01:19.421911" elapsed="0.284033"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-24T11:01:19.706941" level="INFO">Fills the text 'mikael' in the given field.</msg>
+<arg>id=login-username</arg>
+<arg>${USER}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-24T11:01:19.706941" elapsed="0.048576"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-24T11:01:19.756686" level="INFO">Fills the text 'salasana123' in the given field.</msg>
+<arg>id=login-password</arg>
+<arg>${PASS}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-24T11:01:19.755517" elapsed="0.017297"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-03-24T11:01:19.773820" level="INFO">Clicks the element 'id=login-btn'.</msg>
+<arg>id=login-btn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-24T11:01:19.772814" elapsed="0.170612"/>
+</kw>
+<kw name="Click With Options" owner="Browser">
+<msg time="2026-03-24T11:01:19.944563" level="INFO">Clicks the element '"Kirjaudu"'.</msg>
+<arg>"Kirjaudu"</arg>
+<arg>delay= 5 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-24T11:01:19.943426" elapsed="5.048177"/>
+</kw>
+<doc>Testaa, että käyttäjä pystyy kirjautumaan onnistuneesti</doc>
+<status status="PASS" start="2026-03-24T11:01:17.636039" elapsed="7.356586"/>
+</test>
+<status status="PASS" start="2026-03-24T11:01:17.391062" elapsed="7.604808"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Browser Demo2" id="s1" pass="1" fail="0" skip="0">Browser Demo2</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-03-24T11:01:17.633022" level="ERROR">Error in file 'C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\tests\tehtava2\browser_demo2.robot' on line 3: Resource file 'Keywords.robot' does not exist.</msg>
+</errors>
+</robot>
