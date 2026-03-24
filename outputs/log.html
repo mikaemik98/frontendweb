@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.2 (Python 3.11.9 on win32)" name="Generator">
+<meta content="Robot Framework 7.4.2 (Python 3.11.5 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -116,15 +116,16 @@ select {
 #header {
     width: 65em;
     height: 3em;
-    margin: 20px 0 6px 0;
+    margin: 1em 0 0 0;
 }
 h1 {
     float: left;
-    margin: 0 0 0.5em 0;
+    margin: 0 0 1em 0;
     width: 75%;
 }
 h2 {
     clear: left;
+    margin: 1.5em 0 0.5em 0;
 }
 #generated {
     float: right;
@@ -168,7 +169,13 @@ h2 {
     background-color: var(--primary-color);
     border-radius: 3px;
 }
-.label.debug, .label.trace, .label.error, .label.keyword {
+/* https://stackoverflow.com/questions/75238633 */
+@supports (-moz-appearance: none) {
+    .label {
+        padding-top: 4px;
+    }
+}
+.label.debug, .label.trace, .label.error {
     letter-spacing: 0;
 }
 .label.pass, .label.fail, .label.error, .label.skip, .label.warn {
@@ -355,19 +362,6 @@ th.stats-col-graph:hover {
 [data-theme="light"] .dark-mode-icon {
     display: block;
 }
-@keyframes highlight {
-    0% {
-        background: var(--primary-color)
-    }
-    100% {
-        background: var(--target-color);
-    }
-}
-:target {
-    background: var(--target-color);
-    transition: background 0.3s;
-    animation: highlight 4s;
-}
 </style>
 <style media="all">
 /* Icons are from Open Iconic <https://useiconic.com/open/>.
@@ -384,36 +378,43 @@ th.stats-col-graph:hover {
     --elapsed-color: #999;
 }
 /* Containers */
-.suite, .test, #errors {
+.suite, .test, #errors, #errors .messages {
     border-color: #ccc; /* Fallback value */
     border-color: var(--secondary-color);
     border-width: 1px;
     border-style: solid;
-    padding: 0.3em 0.2em;
-    margin: 0.2em 0;
+    padding: 5px;
+    margin-top: 5px;
 }
 .test {
     border-style: dashed;
 }
-#errors, .messages {
+.messages {
     width: 100%;
     border-spacing: 0;
+    padding: 0 5px;
 }
 .children {
     display: none;
-    margin-left: 1.4em;
+    margin-left: 18px;
+    margin-top: 2px;
 }
-.suite, .test, .keyword {
-    margin-left: -0.2em;
+#errors .children {
+    margin-left: 22px;
 }
-#s1, .suite > .children > .keyword {
-    margin-left: 0;
+.suite, .test {
+    margin-left: -5px;
+}
+#s1, #errors {
+    margin: 0;
 }
 /* Suite, test and kw headers */
 .element-header {
+    display: flex;
+    align-items: center;
+    padding: 2px;
     border: 1px solid transparent;
     border-radius: 2px;
-    position: relative;
 }
 .element-header:hover {
     cursor: pointer;
@@ -423,17 +424,15 @@ th.stats-col-graph:hover {
     border-color: var(--secondary-color);
 }
 .element-header-toggle {
-    position: absolute;
-    left: 3px;
-    top: 5px;
+    margin: 0 4px 0 2px;
+    height: 11px;
+    width: 11px;
+    min-width: 11px;
+    background-size: 6px 6px;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAQAAABKxSfDAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0JChSkZz20AAAAGklEQVQI12NgQAKMDKzInP8IDhOqMk4G7AAANQwBE427PYUAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0wIDB2Mmg4di0yaC04eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAzKSIgLz4KPC9zdmc+), none;
     filter: var(--icon-filter);
-    height: 10px;
-    width: 10px;
-    background-size: 6px 6px;
     border-color: #ccc; /* Fallback value */
     border-color: var(--icon-highlight);
     border-width: 1px;
@@ -441,67 +440,59 @@ th.stats-col-graph:hover {
     border-radius: 2px;
 }
 .closed > .element-header-toggle {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAQAAABKxSfDAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0JCDHdVYtxAAAAM0lEQVQI103MMQqAMBQFwVHyITaB3P+W1sKzSBC3mW6hRFw0pUB5DvF1bu9FN0RM3X/wAk98CUnvFTakAAAAAElFTkSuQmCC);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0zIDB2M2gtM3YyaDN2M2gydi0zaDN2LTJoLTN2LTNoLTJ6IiAvPgo8L3N2Zz4=), none;
 }
 .element-header:hover > .element-header-toggle {
     background-color: #ccc; /* Fallback value */
     background-color: var(--icon-highlight);
 }
-.element-header-right:hover ~ .element-header-toggle {
+.element-header-menu:hover ~ .element-header-toggle {
     background-color: transparent;
 }
-.element-header-left {
-    padding: 3px 80px 3px 20px;
-}
-.element-header-right {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 3px;
+.element-header-menu {
+    margin: 0 2px 0 4px;
     cursor: default;
 }
-.element-header .label {
-    margin-right: 0.5em;
+.name, .arg, .assign {
+    margin-left: 7px;
+    white-space: pre-wrap;
 }
 .name {
     font-weight: bold;
-    white-space: pre-wrap;
-}
-.arg, .assign {
-    white-space: pre-wrap;
 }
 .elapsed {
-    float: right;
+    margin-left: auto;
+    padding-left: 0.5em;
     color: #666; /* Fallback value */
     color: var(--elapsed-color);
-    padding-left: 1em;
+    font-size: 0.9em;
+}
+/* https://stackoverflow.com/questions/75238633 */
+@supports (-moz-appearance: none) {
+    .name, .arg, .assign, .elapsed {
+        padding-top: 3px;
+    }
 }
 .link {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHlJREFUGJVtzrEJwmAQBtCn6ASuIKTIBhY2gmghBiJYB1udwk10B8FJbKMBcQFbtbkfJHrVwfu+4/idJR64Y9H7E3higj5O3S8Y44ApLnjhnXCNGhV2yNGggDJwiC02gavUbpDFvscRo4QdXOMKDHBufz3HLYKzNn4AbSkV3fncGQYAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik01Ljg4LjAzYy0uMTguMDEtLjM2LjAzLS41My4wOS0uMjcuMS0uNTMuMjUtLjc1LjQ3YS41LjUgMCAxIDAgLjY5LjY5Yy4xMS0uMTEuMjQtLjE3LjM4LS4yMi4zNS0uMTIuNzgtLjA3IDEuMDYuMjIuMzkuMzkuMzkgMS4wNCAwIDEuNDRsLTEuNSAxLjVjLS40NC40NC0uOC40OC0xLjA2LjQ3LS4yNi0uMDEtLjQxLS4xMy0uNDEtLjEzYS41LjUgMCAxIDAtLjUuODhzLjM0LjIyLjg0LjI1Yy41LjAzIDEuMi0uMTYgMS44MS0uNzhsMS41LTEuNWMuNzgtLjc4Ljc4LTIuMDQgMC0yLjgxLS4yOC0uMjgtLjYxLS40NS0uOTctLjUzLS4xOC0uMDQtLjM4LS4wNC0uNTYtLjAzem0tMiAyLjMxYy0uNS0uMDItMS4xOS4xNS0xLjc4Ljc1bC0xLjUgMS41Yy0uNzguNzgtLjc4IDIuMDQgMCAyLjgxLjU2LjU2IDEuMzYuNzIgMi4wNi40Ny4yNy0uMS41My0uMjUuNzUtLjQ3YS41LjUgMCAxIDAtLjY5LS42OWMtLjExLjExLS4yNC4xNy0uMzguMjItLjM1LjEyLS43OC4wNy0xLjA2LS4yMi0uMzktLjM5LS4zOS0xLjA0IDAtMS40NGwxLjUtMS41Yy40LS40Ljc1LS40NSAxLjAzLS40NC4yOC4wMS40Ny4wOS40Ny4wOWEuNS41IDAgMSAwIC40NC0uODhzLS4zNC0uMi0uODQtLjIyeiIKICAvPgo8L3N2Zz4=), none;
-    filter: var(--icon-filter);
 }
 .expand {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAADtJREFUGJVjYCACKDAwMByA0ljFDjAwMPxnYGB4ABVQgLL/Q+VQBB6gseGmIivCkERXhFUSWRFOSawAAEl7E3uv1iMcAAAAAElFTkSuQmCC);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSA0IDQgNC00LTEuNS0xLjUtMi41IDIuNS0yLjUtMi41eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxKSIgLz4KPC9zdmc+), none;
-    filter: var(--icon-filter);
 }
 .collapse {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAC5JREFUGJVjYCARNEAxTsn/UIyhCFkSQxG6ThQ+C5IpjWhG1yNb4YDFTdjEMAEACi8Q++9Y9TAAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik00IDBsLTQgNCAxLjUgMS41IDIuNS0yLjUgMi41IDIuNSAxLjUtMS41LTQtNHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMSkiIC8+Cjwvc3ZnPg==), none;
-    filter: var(--icon-filter);
 }
 .expand, .collapse, .link {
     float: left;
     display: block;
     visibility: hidden;
-    margin: 0 4px;
+    margin: 0 3px;
     height: 14px;
     width: 14px;
     background-size: 8px 8px;
     background-repeat: no-repeat;
     background-position: center;
+    filter: var(--icon-filter);
     border-color: #ccc; /* Fallback value */
     border-color: var(--icon-highlight);
     border-width: 1px;
@@ -519,23 +510,18 @@ th.stats-col-graph:hover {
     background-color: var(--icon-highlight);
 }
 /* Messages and errors */
+.message-row {
+    height: 20px;
+}
 .messages .time, .messages .message {
     font-family: monospace;
     font-size: 1.1em;
 }
-#errors .message {
-    font-family: monospace;
-    font-size: 1.2em;
-}
-.message-row {
-    height: 20px;
-}
-.time {
+.messages .time {
     width: 7.5em;
 }
-.error-time {
-    width: 11em;
-    font-size: 0.9em;
+#errors .time {
+    width: 12.5em;
     white-space: nowrap;
 }
 .level {
@@ -555,7 +541,6 @@ th.stats-col-graph:hover {
     background-position: center;
 }
 .message-row:hover .select-message div {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0MOzhWKZQOAAAASUlEQVQY032PsRHAIAwDX9BkicD+W8UMEqegAQJWKZ/+3sLZJhFGQEZzNaIa4ibh66En867VNaIeoP5WppNuIGoAlOm3g5VC1AdYeQv1BZPRSgAAAABJRU5ErkJggg==);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0wIDB2MWg4di0xaC04em0wIDJ2MWg2di0xaC02em0wIDJ2MWg4di0xaC04em0wIDJ2MWg2di0xaC02eiIgLz4KPC9zdmc+), none;
     filter: var(--icon-filter);
     border-color: #ccc; /* Fallback value */
@@ -577,7 +562,6 @@ th.stats-col-graph:hover {
 .debug-message {
     display: table;
 }
-/* Metadata */
 .metadata {
     width: 100%;
     border-spacing: 0.2em;
@@ -596,6 +580,20 @@ th.stats-col-graph:hover {
 /* Custom styles for statistics */
 #total-stats tr:hover, #tag-stats tr:hover {
     cursor: default;
+}
+/* Target highlight */
+@keyframes highlight {
+    0% {
+        background: var(--primary-color)
+    }
+    100% {
+        background: var(--target-color);
+    }
+}
+:target {
+    background: var(--target-color);
+    transition: background 0.3s;
+    animation: highlight 4s;
 }
 </style>
 <style media="print">
@@ -724,10 +722,13 @@ function toggleSuite(suiteId) {
     toggleElement(suiteId, ['keyword', 'suite', 'test']);
 }
 function toggleTest(testId) {
-    toggleElement(testId, ['keyword']);
     var test = window.testdata.findLoaded(testId);
-    if (test.status == "FAIL" || test.status == "SKIP")
+    var autoExpand = test.status == "FAIL" || test.status == "SKIP";
+    var closed = $('#' + testId).children('.element-header').hasClass('closed');
+    if (autoExpand && closed)
         expandFailed(test);
+    else
+        toggleElement(testId, ['keyword']);
 }
 function toggleKeyword(kwId) {
     toggleElement(kwId, ['keyword']);
@@ -738,7 +739,8 @@ function toggleElement(elementId, childrenNames) {
     children.toggle(100, '', function () {
         element.children('.element-header').toggleClass('closed');
     });
-    populateChildren(elementId, children, childrenNames);
+    if (childrenNames)
+        populateChildren(elementId, children, childrenNames);
 }
 function populateChildren(elementId, childElement, childrenNames) {
     if (!childElement.hasClass('populated')) {
@@ -1141,7 +1143,7 @@ window.model = (function () {
         kw.type = data.type;
         kw.template = 'keywordTemplate';
         kw.arguments = data.args;
-        kw.assign = data.assign + (data.assign ? ' =  ' : '');
+        kw.assign = data.assign;
         kw.tags = data.tags;
         kw.timeout = data.timeout;
         kw.populateKeywords = createIterablePopulator('Keyword');
@@ -1880,7 +1882,7 @@ function addStatistics() {
         '<th class="stats-col-elapsed">Elapsed</th>' +
         '<th class="stats-col-graph">Pass / Fail / Skip</th>';
     var statTable =
-        '<h2>{Test} Statistics</h2>' +
+        '<h2>Statistics</h2>' +
         '<table class="statistics" id="total-stats"><thead><tr>' +
         '<th class="stats-col-name">Total Statistics</th>' + statHeaders +
         '</tr></thead></table>' +
@@ -1890,7 +1892,7 @@ function addStatistics() {
         '<table class="statistics" id="suite-stats"><thead><tr>' +
         '<th class="stats-col-name">Statistics by Suite</th>' + statHeaders +
         '</tr></thead></table>';
-    $(testOrTask(statTable)).appendTo('#statistics-container');
+    $(statTable).appendTo('#statistics-container');
     util.map(['total', 'tag', 'suite'], addStatTable);
     addTooltipsToElapsedTimes();
     enableStatisticsSorter();
@@ -2071,25 +2073,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,18140],[],[[4,0,0,[],[1,236,17899],[[0,5,6,0,7,8,0,9,[1,236,5827],[[236,2,10],[382,2,11],[382,2,12],[6063,2,13]]],[0,14,6,0,15,16,0,9,[1,6063,1257],[[7320,2,17],[7320,2,18]]],[0,19,6,0,20,21,0,22,[1,7320,19],[[7339,2,23]]],[0,24,6,0,25,26,0,27,[1,7340,2374],[[7341,2,28]]],[0,29,6,0,30,31,0,27,[1,9714,1327],[]],[0,24,6,0,25,32,0,27,[1,11041,4850],[[11041,2,33]]],[0,34,6,0,35,36,0,27,[1,15891,2191],[[15891,2,37]]],[0,38,6,0,39,40,0,22,[1,18082,53],[[18134,2,41]]],[18138,2,42]]]],[],[1,1,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,7635],[],[[4,0,5,[],[1,229,7402],[[0,6,7,0,8,9,0,10,[1,231,1888],[[231,2,11],[255,2,12],[2119,2,13]]],[0,14,7,0,15,16,0,10,[1,2120,261],[[2381,2,17],[2381,2,18]]],[0,19,7,0,20,21,0,22,[1,2382,42],[[2382,2,23]]],[0,19,7,0,20,24,0,22,[1,2425,21],[[2425,2,25]]],[0,26,7,0,27,28,0,22,[1,2446,145],[[2447,2,29]]],[0,30,7,0,27,31,0,22,[1,2591,5039],[[2591,2,32]]]]]],[],[1,1,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Browser Demo","*C:\\Users\\tommiluk\\OneDrive - Metropolia Ammattikorkeakoulu Oy\\2025 kevät\\projekti-terveyssovelluksen-kehitys\\tests\\browser_demo.robot","*../tests/browser_demo.robot","*Test Web Form","*New Browser","*Browser","*<p>Create a new playwright Browser with specified options.\x3c/p>","*chromium    headless=No","*BrowserControl, Setter","*{\"browser\": \"chromium\", \"headless\": false, \"chromiumSandbox\": false, \"devtools\": false, \"handleSIGHUP\": true, \"handleSIGINT\": true, \"handleSIGTERM\": true, \"slowMo\": 0.0, \"timeout\": 30000.0, \"tracesDir\": \"C:\\\\Users\\\\tommiluk\\\\OneDrive - Metropolia Ammattikorkeakoulu Oy\\\\2025 kev\\u00e4t\\\\projekti-terveyssovelluksen-kehitys\\\\outputs\\\\browser\\\\traces\\\\temp\\\\e9672e53-5619-473a-bc0d-f192f58b03c3\"}","*Starting Browser process C:\\Users\\tommiluk\\OneDrive - Metropolia Ammattikorkeakoulu Oy\\2025 kevät\\projekti-terveyssovelluksen-kehitys\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js using port 52858","*Node startup parameters: ['node', 'C:\\\\Users\\\\tommiluk\\\\OneDrive - Metropolia Ammattikorkeakoulu Oy\\\\2025 kevät\\\\projekti-terveyssovelluksen-kehitys\\\\.venv\\\\Lib\\\\site-packages\\\\Browser\\\\wrapper\\\\index.js', '52858']","*Successfully created browser with options: {\"browser\":\"chromium\",\"headless\":false,\"chromiumSandbox\":false,\"devtools\":false,\"handleSIGHUP\":true,\"handleSIGINT\":true,\"handleSIGTERM\":true,\"slowMo\":0,\"timeout\":30000,\"tracesDir\":\"C:\\\\Users\\\\tommiluk\\\\OneDrive - Metropolia Ammattikorkeakoulu Oy\\\\2025 kevät\\\\projekti-terveyssovelluksen-kehitys\\\\outputs\\\\browser\\\\traces\\\\temp\\\\e9672e53-5619-473a-bc0d-f192f58b03c3\"}","*New Page","*<p>Open a new Page.\x3c/p>","eNqzSVTIKEpNs1XKKCkpKLbS1y8vL9crTs1JzcsszdVLSS3Th3H0y1OTQFg3Lb8oVy+jJDdHyY4MTTb6iXYA26cq5A==","eNqdi00OwiAUBq/y0r2wb2ov4QkofAjm8RN4SOrp1YUXcDGLyWRuw1r07gfzSTFHiYbjC44yJlVzB5XjAStksqNSkT9pNF5pMxQa/HUJIrWvWs85VQcjx5GUw1P/RE8cXy6+tKSCJF72P6ZNm/0NC5tAGA==","*No context was open. New context was automatically opened when this page is created.","*Get Title","*<p>Returns the title of the current page.\x3c/p>","*==    Web form","*Assertion, Getter, PageContent","*Title: 'Web form'","*Type Text","*<p>Types the given <code>txt\x3c/code> into the text field found by <code>selector\x3c/code>.\x3c/p>","*[name=\"my-text\"]    ${Username}    delay=0.1 s","*PageContent, Setter","*Types the text 'somebody@example.com' in the given field.","*Type Secret","*<p>Types the given secret from <code>variable_name\x3c/code> into the text field found by <code>selector\x3c/code>.\x3c/p>","*[name=\"my-password\"]    $Password    delay=0.1 s","*[name=\"my-textarea\"]    ${Message}    delay=0.1 s","*Types the text 'Hello, Robot Framework!\nHow are you today?' in the given field.","*Click With Options","*<p>Simulates mouse click on the element found by <code>selector\x3c/code>.\x3c/p>","*button    delay=2 s","*Clicks the element 'button'.","*Get Text","*<p>Returns text attribute of the element found by <code>selector\x3c/code>.\x3c/p>","*id=message    ==    Received!","*Text: 'Received!'","*Set timeout to: 10000"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Browser Demo2","*C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\tests\\tehtava2\\browser_demo2.robot","*../tests/tehtava2/browser_demo2.robot","*Login Onnistuu","*<p>Testaa, että käyttäjä pystyy kirjautumaan onnistuneesti\x3c/p>","*New Browser","*Browser","*<p>Create a new playwright Browser with specified options.\x3c/p>","*chromium    headless=No","*BrowserControl, Setter","eNptkN9PwkAMx/8Vcs+cGUxh8CqiPEyNjLe+3HZddnBbl7sONMb/3UZMwMS+tN9Pf6TtpyoDnSIGtRypqgnUuqFV45Fq0FiPMQqvjY84vqS3prMlvV9lLB6ZyF8XN1Lkcbt5fNq9CuYw/KGb5+IfWjy85RccPZ1yEp3cJCLZtUgDi04TsTMLpsK4cj/r3y8BdnJKBMjdwSDAS4er4I4SFQ4tRSYGWAfqWGNnAZoPRt0H2uOBHYBM7weW9t+fAJzni8e2B5hhNa0Xk1RPslmqb+/QaoPpQtfz6bxKbJaVaNTXN5f6cRo=","*Starting Browser process C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js using at 127.0.0.1:49723","*Successfully created browser with options: {\"browser\":\"chromium\",\"headless\":false,\"chromiumSandbox\":false,\"devtools\":false,\"handleSIGHUP\":true,\"handleSIGINT\":true,\"handleSIGTERM\":true,\"slowMo\":0,\"timeout\":30000,\"tracesDir\":\"C:\\\\Users\\\\Mikae\\\\OneDrive\\\\Tiedostot\\\\Front-end\\\\hyte-projekti\\\\outputs\\\\browser\\\\traces\\\\temp\\\\6ec2f913-1863-45ed-ae39-f727c0d88bea\"}","*New Page","*<p>Open a new Page.\x3c/p>","*${URL}","*Successfully initialized new page object and opened url: <a href=\"http://localhost:5173/login.html\">http://localhost:5173/login.html\x3c/a>","*No context was open. New context was automatically opened when this page is created.","*Fill Text","*<p>Clears and fills the given <code>txt\x3c/code> into the text field found by <code>selector\x3c/code>.\x3c/p>","*id=login-username    ${USER}","*PageContent, Setter","*Fills the text 'mikael' in the given field.","*id=login-password    ${PASS}","*Fills the text 'salasana123' in the given field.","*Click","*<p>Simulates mouse click on the element found by <code>selector\x3c/code>.\x3c/p>","*id=login-btn","*Clicks the element 'id=login-btn'.","*Click With Options","*\"Kirjaudu\"    delay= 5 s","*Clicks the element '\"Kirjaudu\"'."]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:18","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:18","fail":0,"id":"s1","label":"Browser Demo","name":"Browser Demo","pass":1,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:07","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:08","fail":0,"id":"s1","label":"Browser Demo2","name":"Browser Demo2","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1738779466154;
+window.output["baseMillis"] = 1774343731707;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 18154;
+window.output["generated"] = 7662;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2151,8 +2153,9 @@ function addErrors() {
     var errors = window.testdata.errorIterator();
     if (errors.hasNext()) {
         $.tmpl('errorHeaderTemplate').appendTo($('body'));
-        drawErrorsRecursively(errors, $('#errors'));
+        drawErrorsRecursively(errors, $('#errors .messages'));
     }
+    toggleElement('errors');
 }
 
 function drawErrorsRecursively(errors, target) {
@@ -2186,7 +2189,7 @@ function makeElementVisible(id) {
 }
 
 function addExecutionLog(main) {
-    $('body').append($(testOrTask('<h2>{Test} Execution Log</h2>')),
+    $('body').append('<h2>Execution Log</h2>',
                      $.tmpl('suiteTemplate', main));
 }
 </script>
@@ -2231,20 +2234,31 @@ function addExecutionLog(main) {
 </script>
 
 <script type="text/x-jquery-tmpl" id="errorHeaderTemplate">
-  <h2>{{= testOrTask('{Test}')}} Execution Errors</h2>
-  <table id="errors"></table>
+  <h2>Execution Errors</h2>
+  <div id="errors">
+    <div class="element-header closed" onclick="toggleElement('errors')">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label error">ERRORS</div>
+      <div class="name">Errors and warnings during execution</div>
+    </div>
+    <div class="children">
+      <table class="messages"></table>
+    </div>
+  </div>
 </script>
 
 <script type="text/x-jquery-tmpl" id="errorTemplate">
   <tr id="${id}" class="message-row">
-    <td class="error-time">
+    <td class="time">
       {{if link}}
       <a onclick="makeElementVisible('${link}')" href="#${link}" title="Link to details">${date} ${time}</a>
       {{else}}
       ${date} ${time}
       {{/if}}
     </td>
-    <td class="${level.toLowerCase()} level"><span class="label ${level.toLowerCase()}">${level}</span></td>
+    <td class="${level.toLowerCase()} level">
+      <span class="label ${level.toLowerCase()}">${level}</span>
+    </td>
     <td class="message">{{html text}}</td>
     <td class="select-message" onclick="javascript:selectMessage('${id}')" title="Select message text">
       <div></div>
@@ -2254,18 +2268,18 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="suiteTemplate">
   <div id="${id}" class="suite">
-    <div class="element-header closed" onclick="toggleSuite('${id}')">
-      <div class="element-header-left" title="SUITE  {{html name}}  [${status}]">
-        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label ${status.toLowerCase()}">SUITE</span>
-        <span class="name">{{html name}}</span>
-      </div>
-      <div class="element-header-right" onclick="stopPropagation(event)" title="">
+    <div class="element-header closed" onclick="toggleSuite('${id}')"
+         title="SUITE  {{html name}}  [${status}]">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label ${status.toLowerCase()}">SUITE</div>
+      <div class="name">{{html name}}</div>
+      <div class="elapsed" title="Elapsed time">${times.elapsedTime}</div>
+      <div class="element-header-menu" onclick="stopPropagation(event)" title="">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this suite" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" onclick="makeElementVisible('${id}')"
+           title="Link to this suite" href="#${id}"></a>
       </div>
-      <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
     <div class="children">
       <table class="metadata">
@@ -2316,18 +2330,18 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="testTemplate">
   <div id="${id}" class="test">
-    <div class="element-header closed" onclick="toggleTest('${id}')">
-      <div class="element-header-left" title="{{= testOrTask('{TEST}')}}  {{html name}}  [${status}]">
-        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label ${status.toLowerCase()}">{{= testOrTask('{TEST}')}}</span>
-        <span class="name">{{html name}}</span>
-      </div>
-      <div class="element-header-right" onclick="stopPropagation(event)" title="">
+    <div class="element-header closed" onclick="toggleTest('${id}')"
+         title="{{= testOrTask('{TEST}')}}  {{html name}}  [${status}]">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label ${status.toLowerCase()}">{{= testOrTask('{TEST}')}}</div>
+      <div class="name">{{html name}}</div>
+      <div class="elapsed" title="Elapsed time">${times.elapsedTime}</div>
+      <div class="element-header-menu" onclick="stopPropagation(event)" title="">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this {{= testOrTask('{test}')}}" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" href="#${id}" onclick="makeElementVisible('${id}')"
+           title="Link to this {{= testOrTask('{test}')}}"></a>
       </div>
-      <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
     <div class="children">
       <table class="metadata">
@@ -2374,21 +2388,20 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="keywordTemplate">
   <div id="${id}" class="keyword">
-    <div class="element-header closed" onclick="toggleKeyword('${id}')">
-      <div class="element-header-left" title="${type}  {{if name}}{{html fullName}}  {{/if}}[${status}]">
-        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label ${status.toLowerCase()}">${type}</span>
-        <span class="assign">{{html assign}}</span>
-        <span class="name"><span class="parent-name">{{html libname}}{{if libname}} . {{/if}}</span>{{html name}}</span>
-        &nbsp;
-        <span class="arg">{{html arguments}}</span>
-      </div>
-      <div class="element-header-right" onclick="stopPropagation(event)">
+    <div class="element-header closed" onclick="toggleKeyword('${id}')"
+         title="${type}  {{if name}}{{html fullName}}  {{/if}}[${status}]">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label ${status.toLowerCase()}">${type}</div>
+      {{if assign}}<div class="assign">{{html assign}}&nbsp;=</div>{{/if}}
+      <div class="name">{{if libname}}<span class="parent-name">{{html libname}} . </span>{{/if}}{{html name}}</div>
+      <div class="arg">{{html arguments}}</div>
+      <div class="elapsed" title="Elapsed time">${times.elapsedTime}</div>
+      <div class="element-header-menu" onclick="stopPropagation(event)">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this item" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" onclick="makeElementVisible('${id}')"
+           title="Link to this item" href="#${id}"></a>
       </div>
-      <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
     <div class="children">
       <table class="metadata keyword-metadata">

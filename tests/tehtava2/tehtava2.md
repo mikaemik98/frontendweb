@@ -1,6 +1,6 @@
 # Robot framework tehtävä2: Login onnistuu
 
-# Report.html löytyy projektin juuresta
+# Report.html löytyy projektin juuresta tai outputs kansiosta
 
 ### Tavoite:
 Testaa, että käyttäjä pystyy kirjautumaan päiväkirja-sovellukseen.
@@ -23,5 +23,6 @@ Browser
 ### Testin ajaminen:
 ```
 robot tests/tehtava2/browser_demo2.robot
+robot --outputdir outputs tests/tehtava2/browser_demo2.robot
 
 ```
