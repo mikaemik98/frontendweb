@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.5 on win32)" generated="2026-03-31T14:17:30.232480" rpa="false" schemaversion="5">
-<suite id="s1" name="Browser Demo4" source="C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\tests\tehtava4\browser_demo4.robot">
+<robot generator="Robot 7.4.2 (Python 3.11.5 on win32)" generated="2026-03-31T14:34:18.462268" rpa="false" schemaversion="5">
+<suite id="s1" name="Browser Demo5" source="C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\tests\tehtava5\browser_demo5.robot">
 <kw name="Run Keywords" owner="BuiltIn" type="SETUP">
 <kw name="New Browser" owner="Browser">
-<msg time="2026-03-31T14:17:30.461356" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\1c904a86-3073-46c7-b95e-308480cb776f"}</msg>
-<msg time="2026-03-31T14:17:30.489361" level="INFO">Starting Browser process C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:65290</msg>
-<msg time="2026-03-31T14:17:32.198815" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\1c904a86-3073-46c7-b95e-308480cb776f"}</msg>
+<msg time="2026-03-31T14:34:18.705791" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\d6d33c6a-7b75-452b-aa59-0ee432eb8053"}</msg>
+<msg time="2026-03-31T14:34:18.729765" level="INFO">Starting Browser process C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:49290</msg>
+<msg time="2026-03-31T14:34:20.414595" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\d6d33c6a-7b75-452b-aa59-0ee432eb8053"}</msg>
 <arg>chromium</arg>
 <arg>headless=False</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
-<status status="PASS" start="2026-03-31T14:17:30.460350" elapsed="1.738465"/>
+<status status="PASS" start="2026-03-31T14:34:18.704674" elapsed="1.709921"/>
 </kw>
 <kw name="New Page" owner="Browser">
-<msg time="2026-03-31T14:17:32.436962" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173/login.html</msg>
-<msg time="2026-03-31T14:17:32.436962" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-03-31T14:34:20.681817" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173/login.html</msg>
+<msg time="2026-03-31T14:34:20.681817" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-03-31T14:17:32.198815" elapsed="0.238147"/>
+<status status="PASS" start="2026-03-31T14:34:20.415593" elapsed="0.266224"/>
 </kw>
 <arg>New Browser</arg>
 <arg>chromium</arg>
@@ -29,221 +29,265 @@
 <arg>New Page</arg>
 <arg>${URL}</arg>
 <doc>Executes all the given keywords in a sequence.</doc>
-<status status="PASS" start="2026-03-31T14:17:30.459331" elapsed="1.977631"/>
+<status status="PASS" start="2026-03-31T14:34:18.704674" elapsed="1.977143"/>
 </kw>
-<test id="s1-t1" name="Uuden päiväkirjamerkinnän lisääminen" line="30">
-<kw name="Kirjaudu sisään">
+<test id="s1-t1" name="Kirjautuminen env-tunnuksilla" line="38">
+<kw name="Lue tunnukset env-tiedostosta">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2026-03-31T14:34:20.695441" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.env"&gt;C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.env&lt;/a&gt;'.</msg>
+<msg time="2026-03-31T14:34:20.696450" level="INFO">${content} = ROBOT_USERNAME=robot
+ROBOT_PASSWORD=robot1234</msg>
+<var>${content}</var>
+<arg>${ENV_FILE}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.695441" elapsed="0.001009"/>
+</kw>
+<kw name="Split To Lines" owner="String">
+<msg time="2026-03-31T14:34:20.697478" level="INFO">2 lines returned.</msg>
+<msg time="2026-03-31T14:34:20.697478" level="INFO">${lines} = ['ROBOT_USERNAME=robot', 'ROBOT_PASSWORD=robot1234']</msg>
+<var>${lines}</var>
+<arg>${content}</arg>
+<doc>Splits the given string to lines.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.696450" elapsed="0.001028"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-31T14:34:20.698474" level="INFO">${username} = </msg>
+<var>${username}</var>
+<arg>${EMPTY}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.697478" elapsed="0.000996"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-03-31T14:34:20.699470" level="INFO">${password} = </msg>
+<var>${password}</var>
+<arg>${EMPTY}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.698474" elapsed="0.000996"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Start With" owner="BuiltIn">
+<arg>${line}</arg>
+<arg>ROBOT_USERNAME=</arg>
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.700468" elapsed="0.000000"/>
+</kw>
+<msg time="2026-03-31T14:34:20.700468" level="INFO">${is_user} = True</msg>
+<var>${is_user}</var>
+<arg>Should Start With</arg>
+<arg>${line}</arg>
+<arg>ROBOT_USERNAME=</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.699470" elapsed="0.000998"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Start With" owner="BuiltIn">
+<msg time="2026-03-31T14:34:20.701533" level="FAIL">'ROBOT_USERNAME=robot' does not start with 'ROBOT_PASSWORD='</msg>
+<arg>${line}</arg>
+<arg>ROBOT_PASSWORD=</arg>
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<status status="FAIL" start="2026-03-31T14:34:20.701533" elapsed="0.001059">'ROBOT_USERNAME=robot' does not start with 'ROBOT_PASSWORD='</status>
+</kw>
+<msg time="2026-03-31T14:34:20.702592" level="INFO">${is_pass} = False</msg>
+<var>${is_pass}</var>
+<arg>Should Start With</arg>
+<arg>${line}</arg>
+<arg>ROBOT_PASSWORD=</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.700468" elapsed="0.002124"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_user}">
+<kw name="Fetch From Right" owner="String">
+<msg time="2026-03-31T14:34:20.703598" level="INFO">${username} = robot</msg>
+<var>${username}</var>
+<arg>${line}</arg>
+<arg>=</arg>
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.702592" elapsed="0.001006"/>
+</kw>
+<status status="PASS" start="2026-03-31T14:34:20.702592" elapsed="0.001006"/>
+</branch>
+<status status="PASS" start="2026-03-31T14:34:20.702592" elapsed="0.001006"/>
+</if>
+<if>
+<branch type="IF" condition="${is_pass}">
+<kw name="Fetch From Right" owner="String">
+<var>${password}</var>
+<arg>${line}</arg>
+<arg>=</arg>
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<status status="NOT RUN" start="2026-03-31T14:34:20.703598" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2026-03-31T14:34:20.703598" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2026-03-31T14:34:20.703598" elapsed="0.000000"/>
+</if>
+<var name="${line}">ROBOT_USERNAME=robot</var>
+<status status="PASS" start="2026-03-31T14:34:20.699470" elapsed="0.004128"/>
+</iter>
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Start With" owner="BuiltIn">
+<msg time="2026-03-31T14:34:20.705605" level="FAIL">'ROBOT_PASSWORD=robot1234' does not start with 'ROBOT_USERNAME='</msg>
+<arg>${line}</arg>
+<arg>ROBOT_USERNAME=</arg>
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<status status="FAIL" start="2026-03-31T14:34:20.705605" elapsed="0.000000">'ROBOT_PASSWORD=robot1234' does not start with 'ROBOT_USERNAME='</status>
+</kw>
+<msg time="2026-03-31T14:34:20.705605" level="INFO">${is_user} = False</msg>
+<var>${is_user}</var>
+<arg>Should Start With</arg>
+<arg>${line}</arg>
+<arg>ROBOT_USERNAME=</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.704606" elapsed="0.001994"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Should Start With" owner="BuiltIn">
+<arg>${line}</arg>
+<arg>ROBOT_PASSWORD=</arg>
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.706600" elapsed="0.000998"/>
+</kw>
+<msg time="2026-03-31T14:34:20.707598" level="INFO">${is_pass} = True</msg>
+<var>${is_pass}</var>
+<arg>Should Start With</arg>
+<arg>${line}</arg>
+<arg>ROBOT_PASSWORD=</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.706600" elapsed="0.000998"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_user}">
+<kw name="Fetch From Right" owner="String">
+<var>${username}</var>
+<arg>${line}</arg>
+<arg>=</arg>
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<status status="NOT RUN" start="2026-03-31T14:34:20.707598" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2026-03-31T14:34:20.707598" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2026-03-31T14:34:20.707598" elapsed="0.000000"/>
+</if>
+<if>
+<branch type="IF" condition="${is_pass}">
+<kw name="Fetch From Right" owner="String">
+<msg time="2026-03-31T14:34:20.708595" level="INFO">${password} = robot1234</msg>
+<var>${password}</var>
+<arg>${line}</arg>
+<arg>=</arg>
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.708595" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-03-31T14:34:20.707598" elapsed="0.000997"/>
+</branch>
+<status status="PASS" start="2026-03-31T14:34:20.707598" elapsed="0.000997"/>
+</if>
+<var name="${line}">ROBOT_PASSWORD=robot1234</var>
+<status status="PASS" start="2026-03-31T14:34:20.704606" elapsed="0.003989"/>
+</iter>
+<var>${line}</var>
+<value>@{lines}</value>
+<status status="PASS" start="2026-03-31T14:34:20.699470" elapsed="0.009125"/>
+</for>
+<return>
+<value>${username}</value>
+<value>${password}</value>
+<status status="PASS" start="2026-03-31T14:34:20.708595" elapsed="0.000000"/>
+</return>
+<msg time="2026-03-31T14:34:20.708595" level="INFO">${username} = robot</msg>
+<msg time="2026-03-31T14:34:20.708595" level="INFO">${password} = robot1234</msg>
+<var>${username}</var>
+<var>${password}</var>
+<status status="PASS" start="2026-03-31T14:34:20.694430" elapsed="0.014165"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-03-31T14:34:20.709830" level="INFO">Kirjaudutaan käyttäjänä: robot</msg>
+<arg>Kirjaudutaan käyttäjänä: ${username}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-03-31T14:34:20.709830" elapsed="0.000000"/>
+</kw>
 <kw name="Wait For Load State" owner="Browser">
-<msg time="2026-03-31T14:17:32.449742" level="INFO">Waiting page load to state to receive networkidle in 10000.0</msg>
-<msg time="2026-03-31T14:17:32.941207" level="INFO">Load state networkidle got in 10000</msg>
+<msg time="2026-03-31T14:34:20.710887" level="INFO">Waiting page load to state to receive networkidle in 10000.0</msg>
+<msg time="2026-03-31T14:34:21.186126" level="INFO">Load state networkidle got in 10000</msg>
 <arg>networkidle</arg>
 <tag>PageContent</tag>
 <tag>Wait</tag>
 <doc>Waits that the page reaches the required load state.</doc>
-<status status="PASS" start="2026-03-31T14:17:32.449742" elapsed="0.491465"/>
+<status status="PASS" start="2026-03-31T14:34:20.709830" elapsed="0.476296"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-03-31T14:17:32.941207" level="INFO">Fills the text 'robot' in the given field.</msg>
+<msg time="2026-03-31T14:34:21.186126" level="INFO">Fills the text 'robot' in the given field.</msg>
 <arg>css=#login-username</arg>
-<arg>${USERNAME}</arg>
+<arg>${username}</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:32.941207" elapsed="0.031670"/>
+<status status="PASS" start="2026-03-31T14:34:21.186126" elapsed="0.032421"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-03-31T14:17:32.973873" level="INFO">Fills the text 'robot1234' in the given field.</msg>
+<msg time="2026-03-31T14:34:21.219566" level="INFO">Fills the text 'robot1234' in the given field.</msg>
 <arg>css=#login-password</arg>
-<arg>${PASSWORD}</arg>
+<arg>${password}</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:32.972877" elapsed="0.015888"/>
+<status status="PASS" start="2026-03-31T14:34:21.218547" elapsed="0.016790"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-03-31T14:17:32.989790" level="INFO">Clicks the element 'css=#login-btn'.</msg>
+<msg time="2026-03-31T14:34:21.236682" level="INFO">Clicks the element 'css=#login-btn'.</msg>
 <arg>css=#login-btn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:32.988765" elapsed="0.026157"/>
+<status status="PASS" start="2026-03-31T14:34:21.235337" elapsed="0.029104"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-03-31T14:17:36.016868" level="INFO">Slept 3 seconds.</msg>
+<msg time="2026-03-31T14:34:24.264841" level="INFO">Slept 3 seconds.</msg>
 <arg>3s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-03-31T14:17:33.014922" elapsed="3.001946"/>
+<status status="PASS" start="2026-03-31T14:34:21.264441" elapsed="3.000400"/>
 </kw>
-<kw name="Wait For Load State" owner="Browser">
-<msg time="2026-03-31T14:17:36.017992" level="INFO">Waiting page load to state to receive networkidle in 10000.0</msg>
-<msg time="2026-03-31T14:17:36.019996" level="INFO">Load state networkidle got in 10000</msg>
-<arg>networkidle</arg>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-03-31T14:34:24.509326" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="outputs/login_result.png" target="_blank"&gt;&lt;img src="outputs/login_result.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${EXECDIR}/outputs/login_result.png</arg>
 <tag>PageContent</tag>
-<tag>Wait</tag>
-<doc>Waits that the page reaches the required load state.</doc>
-<status status="PASS" start="2026-03-31T14:17:36.016868" elapsed="0.003128"/>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-03-31T14:34:24.264841" elapsed="0.244485"/>
 </kw>
-<status status="PASS" start="2026-03-31T14:17:32.449742" elapsed="3.570254"/>
-</kw>
-<kw name="Navigoi päiväkirjaan">
 <kw name="Evaluate JavaScript" owner="Browser">
-<msg time="2026-03-31T14:17:36.027551" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-31T14:34:24.515644" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-31T14:34:24.515644" level="INFO">${url} = http://localhost:5173/index.html</msg>
+<var>${url}</var>
 <arg>${None}</arg>
-<arg>() =&gt; window.location.href = '/entries.html'</arg>
+<arg>() =&gt; window.location.href</arg>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Executes given javascript on the selected element(s) or on page.</doc>
-<status status="PASS" start="2026-03-31T14:17:36.021242" elapsed="0.006309"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2026-03-31T14:17:39.027663" level="INFO">Slept 3 seconds.</msg>
-<arg>3s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-03-31T14:17:36.027551" elapsed="3.000112"/>
-</kw>
-<kw name="Wait For Load State" owner="Browser">
-<msg time="2026-03-31T14:17:39.027663" level="INFO">Waiting page load to state to receive networkidle in 10000.0</msg>
-<msg time="2026-03-31T14:17:39.029699" level="INFO">Load state networkidle got in 10000</msg>
-<arg>networkidle</arg>
-<tag>PageContent</tag>
-<tag>Wait</tag>
-<doc>Waits that the page reaches the required load state.</doc>
-<status status="PASS" start="2026-03-31T14:17:39.027663" elapsed="0.003040"/>
-</kw>
-<status status="PASS" start="2026-03-31T14:17:36.021242" elapsed="3.009461"/>
-</kw>
-<kw name="Take Screenshot" owner="Browser">
-<msg time="2026-03-31T14:17:39.099234" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="outputs/before_add.png" target="_blank"&gt;&lt;img src="outputs/before_add.png" width="800px"/&gt;&lt;/a&gt;</msg>
-<arg>filename=${EXECDIR}/outputs/before_add.png</arg>
-<tag>PageContent</tag>
-<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
-<status status="PASS" start="2026-03-31T14:17:39.030703" elapsed="0.069589"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-03-31T14:17:39.100292" level="INFO">Clicks the element 'css=#add-entry-btn'.</msg>
-<arg>css=#add-entry-btn</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:39.100292" elapsed="0.029245"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2026-03-31T14:17:40.129757" level="INFO">Slept 1 second.</msg>
-<arg>1s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-03-31T14:17:39.129537" elapsed="1.000220"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-03-31T14:17:40.130762" level="INFO">Fills the text '2025-06-15' in the given field.</msg>
-<arg>css=#entry-date</arg>
-<arg>2025-06-15</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:40.129757" elapsed="0.008105"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-03-31T14:17:40.138867" level="INFO">Fills the text 'Hyvä' in the given field.</msg>
-<arg>css=#entry-mood</arg>
-<arg>Hyvä</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:40.137862" elapsed="0.012034"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-03-31T14:17:40.151944" level="INFO">Fills the text '75' in the given field.</msg>
-<arg>css=#entry-weight</arg>
-<arg>75</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:40.150920" elapsed="0.014154"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-03-31T14:17:40.166135" level="INFO">Fills the text '8' in the given field.</msg>
-<arg>css=#entry-sleep</arg>
-<arg>8</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:40.166135" elapsed="0.012999"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-03-31T14:17:40.180147" level="INFO">Fills the text 'Automaattitesti - Robot Framework' in the given field.</msg>
-<arg>css=#entry-notes</arg>
-<arg>Automaattitesti - Robot Framework</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:40.179134" elapsed="0.012608"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-03-31T14:17:40.192786" level="INFO">Clicks the element 'css=#save-entry'.</msg>
-<arg>css=#save-entry</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-03-31T14:17:40.191742" elapsed="0.021992"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2026-03-31T14:17:42.215063" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-03-31T14:17:40.214769" elapsed="2.000294"/>
-</kw>
-<kw name="Take Screenshot" owner="Browser">
-<msg time="2026-03-31T14:17:42.286485" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="outputs/entry_saved.png" target="_blank"&gt;&lt;img src="outputs/entry_saved.png" width="800px"/&gt;&lt;/a&gt;</msg>
-<arg>filename=${EXECDIR}/outputs/entry_saved.png</arg>
-<tag>PageContent</tag>
-<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
-<status status="PASS" start="2026-03-31T14:17:42.215063" elapsed="0.071422"/>
-</kw>
-<kw name="Evaluate JavaScript" owner="Browser">
-<msg time="2026-03-31T14:17:42.293172" level="INFO">JavaScript executed successfully.</msg>
-<msg time="2026-03-31T14:17:42.294175" level="INFO">${content} = HealthDiary
-Dashboard
-Diary
-Workouts
-Goals
-Progress
-Contact
-Logout
-Päiväkirjamerkinnät
-Add entry
-15.6.2025
-😌 Mood: Hyvä
-⚖️ Weight: 75.00
-💤 Sleep: 8
-
-Automaattitesti - Robot Framework</msg>
-<var>${content}</var>
-<arg>${None}</arg>
-<arg>() =&gt; document.body.innerText</arg>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Executes given javascript on the selected element(s) or on page.</doc>
-<status status="PASS" start="2026-03-31T14:17:42.287592" elapsed="0.006583"/>
+<status status="PASS" start="2026-03-31T14:34:24.509326" elapsed="0.006318"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
-<arg>${content}</arg>
-<arg>Hyvä</arg>
+<arg>${url}</arg>
+<arg>index.html</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-03-31T14:17:42.295205" elapsed="0.000000"/>
+<status status="PASS" start="2026-03-31T14:34:24.515644" elapsed="0.001030"/>
 </kw>
-<doc>Testaa uuden merkinnän luominen täyttämällä kaikki lomakekentät</doc>
-<status status="PASS" start="2026-03-31T14:17:32.436962" elapsed="9.859245"/>
+<doc>Kirjautumistesti joka lukee tunnukset .env-tiedostosta</doc>
+<status status="PASS" start="2026-03-31T14:34:20.682815" elapsed="3.833859"/>
 </test>
 <kw name="Close Browser" owner="Browser" type="TEARDOWN">
-<msg time="2026-03-31T14:17:42.636589" level="INFO">Closed browser</msg>
+<msg time="2026-03-31T14:34:24.840428" level="INFO">Closed browser</msg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-03-31T14:17:42.301138" elapsed="0.335451"/>
+<status status="PASS" start="2026-03-31T14:34:24.521645" elapsed="0.318783"/>
 </kw>
-<status status="PASS" start="2026-03-31T14:17:30.234492" elapsed="12.403241"/>
+<status status="PASS" start="2026-03-31T14:34:18.463271" elapsed="6.377157"/>
 </suite>
 <statistics>
 <total>
@@ -252,7 +296,7 @@ Automaattitesti - Robot Framework</msg>
 <tag>
 </tag>
 <suite>
-<stat name="Browser Demo4" id="s1" pass="1" fail="0" skip="0">Browser Demo4</stat>
+<stat name="Browser Demo5" id="s1" pass="1" fail="0" skip="0">Browser Demo5</stat>
 </suite>
 </statistics>
 <errors>
