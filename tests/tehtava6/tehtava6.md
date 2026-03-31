@@ -1,5 +1,8 @@
 ## Tehtävä 6 – Kirjautumistesti krypatuilla tunnuksilla
 
+[Testiraportti](../../outputs/logkrypt.html)
+[Testitiedosto](browser_demo6.robot)
+
 Testitiedosto: `tests/tehtava6/browser_demo6.robot`  
 Tulokset: `outputs/logkrypt.html`
 
