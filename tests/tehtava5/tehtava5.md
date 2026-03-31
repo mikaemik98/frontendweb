@@ -1,5 +1,8 @@
 ## Tehtävä 5 – Kirjautumistesti .env-tunnuksilla
 
+[Testiraportti](../../outputs/logdotenv.html)
+[Testitiedosto](browser_demo5.robot)
+
 Testitiedosto: `tests/tehtava5/browser_demo5.robot`  
 Tulokset: `outputs/logdotenv.html`
 

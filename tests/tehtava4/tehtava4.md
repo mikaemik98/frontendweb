@@ -1,5 +1,8 @@
 ## Tehtävä 4 – Browser Library: Oman sovelluksen testaus
 
+[Testiraportti](../../outputs/logdiary.html)
+[Testitiedosto](browser_demo4.robot)
+
 Testitiedosto: `tests/tehtava4/browser_demo4.robot`  
 Tulokset: `outputs/logdiary.html`
 
