@@ -24,7 +24,7 @@ robot --outputdir outputs/tehtava6 tests/tehtava6/browser_demo6.robot
 
 ## Tehtävä 8 – GitHub Pages -sivusto
 
-Sivusto: [https://mikaemik98.github.io/hyte-projekti/](https://mikaemik98.github.io/hyte-projekti/)  
+Sivusto: [https://mikaemik98.github.io/frontendweb/](https://mikaemik98.github.io/frontendweb/)  
 Sivuston lähde: [docs/](../../docs/)
 
 ### Mitä tehtiin
