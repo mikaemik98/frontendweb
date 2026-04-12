@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Robot Framework Testiraportit</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 0 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #4a90d9; color: white; }
+        tr:hover { background-color: #f5f5f5; }
+        a { color: #4a90d9; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .pass { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Robot Framework Testiraportit</h1>
+    <p>HealthDiary-projektin automaatiotestien tulokset</p>
+
+    <table>
+        <tr>
+            <th>Tehtävä</th>
+            <th>Kuvaus</th>
+            <th>Tulos</th>
+            <th>Raportit</th>
+        </tr>
+        <tr>
+            <td>Tehtävä 3</td>
+            <td>Web Form -testaus (Selenium demo)</td>
+            <td class="pass">9/9 PASS</td>
+            <td>
+                <a href="tehtava3/log.html">Log</a> |
+                <a href="tehtava3/report.html">Report</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Tehtävä 4</td>
+            <td>Päiväkirjamerkinnän lisääminen</td>
+            <td class="pass">1/1 PASS</td>
+            <td>
+                <a href="tehtava4/log.html">Log</a> |
+                <a href="tehtava4/report.html">Report</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Tehtävä 5</td>
+            <td>Kirjautuminen .env-tunnuksilla</td>
+            <td class="pass">1/1 PASS</td>
+            <td>
+                <a href="tehtava5/log.html">Log</a> |
+                <a href="tehtava5/report.html">Report</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Tehtävä 6</td>
+            <td>Kirjautuminen krypatuilla tunnuksilla</td>
+            <td class="pass">1/1 PASS</td>
+            <td>
+                <a href="tehtava6/log.html">Log</a> |
+                <a href="tehtava6/report.html">Report</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
