@@ -17,12 +17,14 @@ Kirjaudu sisään
     Fill Text    css=#login-username    ${USERNAME}
     Fill Text    css=#login-password    ${PASSWORD}
     Click    css=#login-btn
-    Sleep    3s
+    Sleep    5s
+    Take Screenshot    filename=${EXECDIR}/outputs/tehtava4/after_login.png
     Wait For Load State    networkidle
 
 Navigoi päiväkirjaan
     Evaluate JavaScript    ${None}    () => window.location.href = '/entries.html'
-    Sleep    3s
+    Sleep    5s
+    Take Screenshot    filename=${EXECDIR}/outputs/tehtava4/after_nav.png
     Wait For Load State    networkidle
 
 *** Test Cases ***
@@ -32,7 +34,7 @@ Uuden päiväkirjamerkinnän lisääminen
     Kirjaudu sisään
     Navigoi päiväkirjaan
 
-    Take Screenshot    filename=${EXECDIR}/outputs/before_add.png
+    Take Screenshot    filename=${EXECDIR}/outputs/tehtava4/before_add.png
 
     Click    css=#add-entry-btn
     Sleep    1s
