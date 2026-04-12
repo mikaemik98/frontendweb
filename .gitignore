@@ -1,3 +1,4 @@
+.env
 # Logs
 logs
 *.log
@@ -22,3 +23,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Lisätään .venv hakemisto .gitignoreen
+.venv
+
+outputs/tehtava3/output.xml
+outputs/tehtava4/output.xml
+outputs/tehtava5/output.xml
+outputs/tehtava6/output.xml
+outputs/*.png
+outputs/*.txt
+outputs/*.xml

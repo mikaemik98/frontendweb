@@ -1,3 +1,11 @@
+/**
+ * BMI-sivu: laskee BMI:n frontissa ja päivittää taulukon tyylit/analyysin.
+ *
+ * Huom:
+ * - Frontissa token tallennetaan localStorageen ja lähetetään Authorization-headerissa.
+ * - Backissa req.user asetetaan authentication-middlewarellä (JWT).
+ */
+
 import '../css/style.css';
 import '../css/bmi.css';
 import '../css/mobile.css';

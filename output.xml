@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.5 on win32)" generated="2026-03-31T14:46:36.170946" rpa="false" schemaversion="5">
+<suite id="s1" name="Browser Demo6" source="C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\tests\tehtava6\browser_demo6.robot">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2026-03-31T14:46:36.939357" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\cece9de3-00e7-4f84-9fbd-38fc76693fd0"}</msg>
+<msg time="2026-03-31T14:46:36.964845" level="INFO">Starting Browser process C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:63381</msg>
+<msg time="2026-03-31T14:46:38.768770" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\browser\\traces\\temp\\cece9de3-00e7-4f84-9fbd-38fc76693fd0"}</msg>
+<arg>chromium</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-03-31T14:46:36.938354" elapsed="1.830416"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-03-31T14:46:39.007095" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173/login.html</msg>
+<msg time="2026-03-31T14:46:39.007095" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-03-31T14:46:38.769788" elapsed="0.237307"/>
+</kw>
+<arg>New Browser</arg>
+<arg>chromium</arg>
+<arg>headless=False</arg>
+<arg>AND</arg>
+<arg>New Page</arg>
+<arg>${URL}</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2026-03-31T14:46:36.938354" elapsed="2.068741"/>
+</kw>
+<test id="s1-t1" name="Kirjautuminen krypatuilla tunnuksilla" line="17">
+<kw name="Wait For Load State" owner="Browser">
+<msg time="2026-03-31T14:46:39.021503" level="INFO">Waiting page load to state to receive networkidle in 10000.0</msg>
+<msg time="2026-03-31T14:46:39.518745" level="INFO">Load state networkidle got in 10000</msg>
+<arg>networkidle</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits that the page reaches the required load state.</doc>
+<status status="PASS" start="2026-03-31T14:46:39.020434" elapsed="0.498311"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-31T14:46:39.519750" level="INFO">Fills the text '***' in the given field.</msg>
+<arg>css=#login-username</arg>
+<arg>${USERNAME}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-31T14:46:39.518745" elapsed="0.033252"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-31T14:46:39.553003" level="INFO">Fills the text '***' in the given field.</msg>
+<arg>css=#login-password</arg>
+<arg>${PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-31T14:46:39.551997" elapsed="0.015681"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-03-31T14:46:39.568696" level="INFO">Clicks the element 'css=#login-btn'.</msg>
+<arg>css=#login-btn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-31T14:46:39.568696" elapsed="0.027579"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-03-31T14:46:42.598197" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-03-31T14:46:39.597689" elapsed="3.000508"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-03-31T14:46:42.834650" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="outputs/login_crypto.png" target="_blank"&gt;&lt;img src="outputs/login_crypto.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${EXECDIR}/outputs/login_crypto.png</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-03-31T14:46:42.598197" elapsed="0.236453"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-31T14:46:42.841658" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-31T14:46:42.841658" level="INFO">${url} = http://localhost:5173/index.html</msg>
+<var>${url}</var>
+<arg>${None}</arg>
+<arg>() =&gt; window.location.href</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-31T14:46:42.834650" elapsed="0.007008"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>index.html</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-03-31T14:46:42.841658" elapsed="0.001003"/>
+</kw>
+<doc>Kirjautumistesti jossa tunnukset on kryptattu CryptoLibraryllä</doc>
+<status status="PASS" start="2026-03-31T14:46:39.008164" elapsed="3.834497"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-03-31T14:46:43.182824" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-31T14:46:42.847988" elapsed="0.334836"/>
+</kw>
+<status status="PASS" start="2026-03-31T14:46:36.171963" elapsed="7.010861"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Browser Demo6" id="s1" pass="1" fail="0" skip="0">Browser Demo6</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

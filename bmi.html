@@ -20,11 +20,12 @@
         <nav>
           <ul>
             <li><a href="index.html">Dashboard</a></li>
-            <li><a href="#diary">Diary</a></li>
-            <li><a href="#workouts">Workouts</a></li>
-            <li><a href="#goals">Goals</a></li>
+            <li><a href="entries.html">Diary</a></li>
+            <li><a href="workouts.html">Workouts</a></li>
+            <li><a href="goals.html">Goals</a></li>
             <li><a href="bmi.html">Progress</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
           </ul>
         </nav>
         <button class="menu-toggle">
@@ -76,7 +77,43 @@
           </p>
         </section>
       </div>
+
+      <section class="progress-page">
+        <header class="dashboardheader">
+          <h1>Your progress</h1>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stats-grid">
+            <article class="stat-card">
+              <h3>Weight change</h3>
+              <p id="weightChange">-</p>
+              <span>From first entry</span>
+            </article>
+
+            <article class="stat-card">
+              <h3>Average Sleep</h3>
+              <p id="avgSleep">-</p>
+              <span>Hours per night</span>
+            </article>
+
+            <article class="stat-card">
+              <h3>Total workouts</h3>
+              <p id="workoutCount">-</p>
+              <span>Logged workouts</span>
+            </article>
+
+            <article class="stat-card">
+              <h3>Diary entries</h3>
+              <p id="entryCount">-</p>
+              <span>Total entries</span>
+            </article>
+          </article>
+        </section>
+      </section>
     </main>
     <script type="module" src="/src/js/bmi-start.js"></script>
+    <script type="module" src="/src/js/auth.js"></script>
+    <script type="module" src="/src/js/progress.js"></script>
   </body>
 </html>

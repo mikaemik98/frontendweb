@@ -99,16 +99,96 @@ addItemForm.addEventListener('submit', addItem);
 
 //siirretään varsinainen fetch omaksi geneeriseksi funktioksi
 
+//yleinen tiedosto API-kutsuille
 const BASE_URL = 'http://localhost:3000/api';
 
+const getToken = () => localStorage.getItem('token');
+
+const authHeaders = () => {
+  const token = getToken();
+  //console.log('token?', token);
+  return token ? {Authorization: `Bearer ${token}`} : {};
+};
+
+//GET (listat, yksittäiset resurssit)
+export const apiGet = async (endpoint) => {
+  const response = await fetch(BASE_URL + endpoint, {
+    headers: {...authHeaders()},
+    cache: 'no-store',
+  });
+
+  const text = await response.text();
+  let data = {};
+  try {
+    data = text ? JSON.parse(text) : {};
+  } catch {}
+
+  if (!response.ok) {
+    const err = new Error(
+      `GET ${endpoint} failed (${response.status}) ${text.slice(0, 120)}`
+    );
+    err.status = response.status; // <<< tärkeä
+    err.body = data; // <<< kätevä
+    throw err;
+  }
+  return text ? JSON.parse(text) : {};
+};
+
+//POST (login, register, uusi workout, uusi diary entry)
 export const apiPost = async (endpoint, data) => {
   const response = await fetch(BASE_URL + endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      ...authHeaders(),
     },
     body: JSON.stringify(data),
   });
 
-  return await response.json();
+  const text = await response.text();
+  const result = text ? JSON.parse(text) : {};
+
+  if (!response.ok) {
+    throw new Error(result.error || result.message || 'API error');
+  }
+
+  return result;
+};
+
+//PUT päivitetään olemassa olevaa dataa
+export const apiPut = async (endpoint, data) => {
+  const response = await fetch(BASE_URL + endpoint, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      ...authHeaders(),
+    },
+    body: JSON.stringify(data),
+  });
+
+  const text = await response.text();
+  if (!response.ok) {
+    throw new Error(
+      `PUT ${endpoint} failed (${response.status}) ${text.slice(0, 120)}`
+    );
+  }
+  return text ? JSON.parse(text) : {};
+};
+
+//DELETE
+export const apiDelete = async (endpoint) => {
+  const response = await fetch(BASE_URL + endpoint, {
+    method: 'DELETE',
+    headers: {
+      ...authHeaders(),
+    },
+  });
+
+  const text = await response.text();
+  if (!response.ok) {
+    throw new Error(
+      `DELETE ${endpoint} failed (${response.status}) ${text.slice(0, 120)}`
+    );
+  }
+  return text ? JSON.parse(text) : {};
 };

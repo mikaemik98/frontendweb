@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthDiary - Diary entries</title>
+</head>
+
+<body>
+    <!-- sama navbar kuin muilla sivuilla -->
+    <div class="container">
+        <div class="navbar">
+            <h2 class="logo">HealthDiary</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="entries.html">Diary</a></li>
+                    <li><a href="workouts.html">Workouts</a></li>
+                    <li><a href="goals.html">Goals</a></li>
+                    <li><a href="bmi.html">Progress</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" id="logout-btn">Logout</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle"><span></span></button>
+        </div>
+    </div>
+
+    <main class="entries-page">
+        
+    
+        <div id="entry-modal" class="modal modal-hidden">
+            <div class="modal-content">
+                <h2>New diary entry</h2>
+    
+                <input id="entry-date" type="date" />
+                <input id="entry-mood" placeholder="Mood (optional)" />
+                <input id="entry-weight" type="number" step="0.1" placeholder="Weight (kg, optional)" />
+                <input id="entry-sleep" type="number" step="0.5" placeholder="Sleep hours (optional)" />
+                <textarea id="entry-notes" placeholder="Notes (optional)"></textarea>
+    
+                <div style="display:flex; gap:10px; margin-top:12px;">
+                    <button id="save-entry" type="button">Save</button>
+                    <button id="close-entry" type="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    
+        <header class="dashboardheader">
+            <h1>Päiväkirjamerkinnät</h1>
+        </header>
+    <button id="add-entry-btn">Add entry</button>
+        <section id="entries-container" class="entries-grid"></section>
+    </main>
+
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="/src/js/entries.js"></script>
+    <script type="module" src="/src/js/auth.js"></script>
+</body>
+
+</html>

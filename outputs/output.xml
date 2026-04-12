@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.5 on win32)" generated="2026-03-29T22:19:54.799371" rpa="false" schemaversion="5">
+<suite id="s1" name="Browser Demo3" source="C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\tests\tehtava3\browser_demo3.robot">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2026-03-29T22:19:55.210110" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\outputs\\browser\\traces\\temp\\ee641565-993b-4026-b427-878dba6d5a87"}</msg>
+<msg time="2026-03-29T22:19:55.243128" level="INFO">Starting Browser process C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:63678</msg>
+<msg time="2026-03-29T22:19:57.993234" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Mikae\\OneDrive\\Tiedostot\\Front-end\\hyte-projekti\\outputs\\browser\\traces\\temp\\ee641565-993b-4026-b427-878dba6d5a87"}</msg>
+<arg>chromium</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-03-29T22:19:55.209088" elapsed="2.784146"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-03-29T22:20:00.745590" level="INFO">Successfully initialized new page object and opened url: https://www.selenium.dev/selenium/web/web-form.html</msg>
+<msg time="2026-03-29T22:20:00.745590" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-03-29T22:19:57.994231" elapsed="2.752473"/>
+</kw>
+<arg>New Browser</arg>
+<arg>chromium</arg>
+<arg>headless=False</arg>
+<arg>AND</arg>
+<arg>New Page</arg>
+<arg>${URL}</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2026-03-29T22:19:55.208080" elapsed="5.538624"/>
+</kw>
+<test id="s1-t1" name="Dropdown Select -kentän testaus" line="15">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:00.806961" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.761165" elapsed="0.045796"/>
+</kw>
+<kw name="Select Options By" owner="Browser">
+<msg time="2026-03-29T22:20:00.808984" level="INFO">Selects the option(s) 1 by attribute SelectAttribute.value from element select[name="my-select"].</msg>
+<arg>select[name="my-select"]</arg>
+<arg>value</arg>
+<arg>1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.807973" elapsed="0.083006"/>
+</kw>
+<kw name="Get Selected Options" owner="Browser">
+<msg time="2026-03-29T22:20:00.913044" level="INFO">entry {
+  value: "Open this select menu"
+  label: "Open this select menu"
+}
+entry {
+  value: "1"
+  label: "One"
+  index: 1
+  selected: true
+}
+entry {
+  value: "2"
+  label: "Two"
+  index: 2
+}
+entry {
+  value: "3"
+  label: "Three"
+  index: 3
+}
+</msg>
+<msg time="2026-03-29T22:20:00.914114" level="INFO">${selected} = ['One']</msg>
+<var>${selected}</var>
+<arg>select[name="my-select"]</arg>
+<arg>label</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the specified attribute of selected options of the ``select`` element.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.890979" elapsed="0.023135"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${selected}[0]</arg>
+<arg>One</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.914114" elapsed="0.001014"/>
+</kw>
+<kw name="Select Options By" owner="Browser">
+<msg time="2026-03-29T22:20:00.916140" level="INFO">Selects the option(s) Two by attribute SelectAttribute.label from element select[name="my-select"].</msg>
+<arg>select[name="my-select"]</arg>
+<arg>label</arg>
+<arg>Two</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.916140" elapsed="0.020907"/>
+</kw>
+<kw name="Get Selected Options" owner="Browser">
+<msg time="2026-03-29T22:20:00.956936" level="INFO">entry {
+  value: "Open this select menu"
+  label: "Open this select menu"
+}
+entry {
+  value: "1"
+  label: "One"
+  index: 1
+}
+entry {
+  value: "2"
+  label: "Two"
+  index: 2
+  selected: true
+}
+entry {
+  value: "3"
+  label: "Three"
+  index: 3
+}
+</msg>
+<msg time="2026-03-29T22:20:00.956936" level="INFO">${selected2} = ['Two']</msg>
+<var>${selected2}</var>
+<arg>select[name="my-select"]</arg>
+<arg>label</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the specified attribute of selected options of the ``select`` element.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.937047" elapsed="0.019889"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${selected2}[0]</arg>
+<arg>Two</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.957946" elapsed="0.001007"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:00.746704" elapsed="0.212249"/>
+</test>
+<test id="s1-t2" name="Dropdown Datalist -kentän testaus" line="23">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.014123" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:00.973703" elapsed="0.041425"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-29T22:20:01.016137" level="INFO">Fills the text 'New York' in the given field.</msg>
+<arg>input[name="my-datalist"]</arg>
+<arg>New York</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.015128" elapsed="0.031592"/>
+</kw>
+<kw name="Get Property" owner="Browser">
+<msg time="2026-03-29T22:20:01.094286" level="INFO">Property: 'New York'</msg>
+<msg time="2026-03-29T22:20:01.094286" level="INFO">${value} = New York</msg>
+<var>${value}</var>
+<arg>input[name="my-datalist"]</arg>
+<arg>value</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.047747" elapsed="0.046539"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${value}</arg>
+<arg>New York</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.095294" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:00.968615" elapsed="0.127686"/>
+</test>
+<test id="s1-t3" name="File Input -kentän testaus" line="28">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.145662" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.109285" elapsed="0.036377"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2026-03-29T22:20:01.146660" level="INFO" html="true">Created file '&lt;a href="file://C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\outputs\test_upload.txt"&gt;C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\outputs\test_upload.txt&lt;/a&gt;'.</msg>
+<arg>${EXECDIR}/outputs/test_upload.txt</arg>
+<arg>Robot Framework test file content</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.145662" elapsed="0.001995"/>
+</kw>
+<kw name="Get Property" owner="Browser">
+<msg time="2026-03-29T22:20:01.192554" level="INFO">Property: 'file'</msg>
+<msg time="2026-03-29T22:20:01.192554" level="INFO">${type} = file</msg>
+<var>${type}</var>
+<arg>input[name="my-file"]</arg>
+<arg>type</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.147657" elapsed="0.044897"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${type}</arg>
+<arg>file</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.192554" elapsed="0.001087"/>
+</kw>
+<kw name="Upload File By Selector" owner="Browser">
+<arg>input[name="my-file"]</arg>
+<arg>${EXECDIR}/outputs/test_upload.txt</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Uploads file from ``path`` to file input element matched by selector.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.193641" elapsed="0.020269"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:01.104078" elapsed="0.111283"/>
+</test>
+<test id="s1-t4" name="Checkbox-kenttien testaus" line="34">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.266481" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.227207" elapsed="0.039274"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.276688" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.277714" level="INFO">${check1_initial} = True</msg>
+<var>${check1_initial}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-check-1').checked</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.266481" elapsed="0.011233"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${check1_initial}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.277714" elapsed="0.001010"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.283775" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.283775" level="INFO">${check2_initial} = False</msg>
+<var>${check2_initial}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-check-2').checked</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.278724" elapsed="0.005051"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${check2_initial}</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.284802" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.292779" level="INFO">JavaScript executed successfully.</msg>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-check-2').click()</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.285809" elapsed="0.006970"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.298616" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.299640" level="INFO">${check2_after} = True</msg>
+<var>${check2_after}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-check-2').checked</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.293821" elapsed="0.005819"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${check2_after}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.299640" elapsed="0.001009"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.305952" level="INFO">JavaScript executed successfully.</msg>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-check-1').click()</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.300649" elapsed="0.006314"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.313795" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.313795" level="INFO">${check1_after} = False</msg>
+<var>${check1_after}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-check-1').checked</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.306963" elapsed="0.006832"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${check1_after}</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.313795" elapsed="0.001143"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:01.221946" elapsed="0.092992"/>
+</test>
+<test id="s1-t5" name="Radio Button -kenttien testaus" line="51">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.366125" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.328852" elapsed="0.037273"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.378427" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.378427" level="INFO">${radio1_initial} = True</msg>
+<var>${radio1_initial}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-radio-1').checked</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.367133" elapsed="0.011294"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${radio1_initial}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.379553" elapsed="0.001013"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.386153" level="INFO">JavaScript executed successfully.</msg>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-radio-2').click()</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.380566" elapsed="0.005587"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.392655" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.392655" level="INFO">${radio2_after} = True</msg>
+<var>${radio2_after}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-radio-2').checked</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.387428" elapsed="0.005227"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${radio2_after}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.393936" elapsed="0.001015"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.401316" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.401316" level="INFO">${radio1_after} = False</msg>
+<var>${radio1_after}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-radio-1').checked</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.394951" elapsed="0.006365"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${radio1_after}</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.402500" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:01.324446" elapsed="0.079187"/>
+</test>
+<test id="s1-t6" name="Color Picker -kentän testaus" line="64">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.452139" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.418152" elapsed="0.034984"/>
+</kw>
+<kw name="Get Property" owner="Browser">
+<msg time="2026-03-29T22:20:01.490978" level="INFO">Property: '#563d7c'</msg>
+<msg time="2026-03-29T22:20:01.490978" level="INFO">${default_color} = #563d7c</msg>
+<var>${default_color}</var>
+<arg>input[name="my-colors"]</arg>
+<arg>value</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.453136" elapsed="0.037842"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${default_color}</arg>
+<arg>\#563d7c</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.491983" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.497972" level="INFO">JavaScript executed successfully.</msg>
+<arg>${None}</arg>
+<arg>() =&gt; { let el = document.querySelector('input[name="my-colors"]'); el.value = '#ff5733'; el.dispatchEvent(new Event('change')); }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.492989" elapsed="0.004983"/>
+</kw>
+<kw name="Get Property" owner="Browser">
+<msg time="2026-03-29T22:20:01.510770" level="INFO">Property: '#ff5733'</msg>
+<msg time="2026-03-29T22:20:01.510770" level="INFO">${new_color} = #ff5733</msg>
+<var>${new_color}</var>
+<arg>input[name="my-colors"]</arg>
+<arg>value</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.498996" elapsed="0.011774"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${new_color}</arg>
+<arg>\#ff5733</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.511775" elapsed="0.001114"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:01.411988" elapsed="0.100901"/>
+</test>
+<test id="s1-t7" name="Date Picker -kentän testaus" line="72">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.561060" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.524549" elapsed="0.036511"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-29T22:20:01.562092" level="INFO">Fills the text '2025-06-15' in the given field.</msg>
+<arg>input[name="my-date"]</arg>
+<arg>2025-06-15</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.562092" elapsed="0.047507"/>
+</kw>
+<kw name="Get Property" owner="Browser">
+<msg time="2026-03-29T22:20:01.633829" level="INFO">Property: '2025-06-15'</msg>
+<msg time="2026-03-29T22:20:01.633829" level="INFO">${date_value} = 2025-06-15</msg>
+<var>${date_value}</var>
+<arg>input[name="my-date"]</arg>
+<arg>value</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.609599" elapsed="0.024230"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${date_value}</arg>
+<arg>2025-06-15</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.633829" elapsed="0.001003"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:01.519371" elapsed="0.115461"/>
+</test>
+<test id="s1-t8" name="Range Slider -kentän testaus" line="77">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.685714" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.647005" elapsed="0.038709"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.693576" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.693576" level="INFO">${default_range} = 5</msg>
+<var>${default_range}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('input[type="range"]').value</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.686777" elapsed="0.007812"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${default_range}</arg>
+<arg>5</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.694589" elapsed="0.001007"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.700126" level="INFO">JavaScript executed successfully.</msg>
+<arg>${None}</arg>
+<arg>() =&gt; { let el = document.querySelector('input[type="range"]'); el.value = '8'; el.dispatchEvent(new Event('input')); el.dispatchEvent(new Event('change')); }</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.695596" elapsed="0.005540"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.706198" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2026-03-29T22:20:01.707213" level="INFO">${new_range} = 8</msg>
+<var>${new_range}</var>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('input[type="range"]').value</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.701136" elapsed="0.006077"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${new_range}</arg>
+<arg>8</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.707213" elapsed="0.001011"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:01.641397" elapsed="0.068029"/>
+</test>
+<test id="s1-t9" name="Lomakkeen kokonaislähetys kaikkine kenttineen" line="88">
+<kw name="Go To" owner="Browser" type="SETUP">
+<msg time="2026-03-29T22:20:01.758449" level="INFO">Successfully opened URL https://www.selenium.dev/selenium/web/web-form.html</msg>
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.721993" elapsed="0.036456"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-29T22:20:01.759611" level="INFO">Fills the text 'RobotFramework Testi' in the given field.</msg>
+<arg>input[name="my-text"]</arg>
+<arg>RobotFramework Testi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.759611" elapsed="0.023876"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-29T22:20:01.784869" level="INFO">Fills the text 'SalainenSana123' in the given field.</msg>
+<arg>input[name="my-password"]</arg>
+<arg>SalainenSana123</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.784869" elapsed="0.018539"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-29T22:20:01.804747" level="INFO">Fills the text 'Automaattisesti täytetty kenttä.' in the given field.</msg>
+<arg>textarea[name="my-textarea"]</arg>
+<arg>Automaattisesti täytetty kenttä.</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.804747" elapsed="0.014866"/>
+</kw>
+<kw name="Select Options By" owner="Browser">
+<msg time="2026-03-29T22:20:01.821679" level="INFO">Selects the option(s) Three by attribute SelectAttribute.label from element select[name="my-select"].</msg>
+<arg>select[name="my-select"]</arg>
+<arg>label</arg>
+<arg>Three</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.820654" elapsed="0.028144"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-03-29T22:20:01.851233" level="INFO">Fills the text 'Los Angeles' in the given field.</msg>
+<arg>input[name="my-datalist"]</arg>
+<arg>Los Angeles</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.850195" elapsed="0.015378"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.884244" level="INFO">JavaScript executed successfully.</msg>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-check-2').click()</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.865573" elapsed="0.018671"/>
+</kw>
+<kw name="Evaluate JavaScript" owner="Browser">
+<msg time="2026-03-29T22:20:01.890364" level="INFO">JavaScript executed successfully.</msg>
+<arg>${None}</arg>
+<arg>() =&gt; document.querySelector('#my-radio-2').click()</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Executes given javascript on the selected element(s) or on page.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.884244" elapsed="0.006120"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-03-29T22:20:01.891687" level="INFO">Clicks the element 'button[type="submit"]'.</msg>
+<arg>button[type="submit"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.890364" elapsed="0.083529"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-03-29T22:20:02.001610" level="INFO">Waited for Element with selector text=Received! at state visible</msg>
+<arg>text=Received!</arg>
+<arg>visible</arg>
+<arg>timeout=5s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-03-29T22:20:01.974966" elapsed="0.027705"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:20:01.716746" elapsed="0.285925"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-03-29T22:20:02.473311" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-29T22:20:02.010416" elapsed="0.463893"/>
+</kw>
+<status status="PASS" start="2026-03-29T22:19:54.801390" elapsed="7.672919"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Browser Demo3" id="s1" pass="9" fail="0" skip="0">Browser Demo3</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -20,16 +20,15 @@
         <nav>
           <ul>
             <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#diary">Diary</a></li>
-            <li><a href="#workouts">Workouts</a></li>
-            <li><a href="#goals">Goals</a></li>
+            <li><a href="entries.html">Diary</a></li>
+            <li><a href="workouts.html">Workouts</a></li>
+            <li><a href="goals.html">Goals</a></li>
             <li><a href="bmi.html">Progress</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="#" id="logout-btn">Logout</a></li>
           </ul>
         </nav>
-        <button class="menu-toggle">
-          <span id="username-display"></span>
+        <button class="menu-toggle"><span></span>
         </button>
       </div>
     </div>
@@ -62,27 +61,27 @@
 
     <main class="dashboard">
       <header class="dashboardheader">
-        <h1>Hei, Miku</h1>
+        <h1>Hei, <span id="username"></span></h1>
         <p>Tässä tämän viikon hyvinvointi yhteenveto</p>
       </header>
 
       <section class="cards">
         <div class="card" id="cardworkout">
           <h3>Viimeisin treeni</h3>
-          <p>Ei merkintöjä</p>
-          <span></span>
+          <p class="stat-main">-</p>
+          <span class="stat-sub"></span>
         </div>
 
         <div class="card" id="cardweight">
           <h3>Paino</h3>
-          <p>Ei merkintöjä</p>
-          <span></span>
+          <p class="stat-main">-</p>
+          <span class="stat-sub"></span>
         </div>
 
         <div class="card" id="cardgoals">
           <h3>Tavoite</h3>
-          <p>Ei merkintöjä</p>
-          <span></span>
+          <p class="stat-main">-</p>
+          <span class="stat-sub"></span>
         </div>
       </section>
 

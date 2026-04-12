@@ -1,0 +1,35 @@
+.progress-page {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+}
+
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1 1 220px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.stat-card span {
+    font-size: 14px;
+    color: #666;
+}
