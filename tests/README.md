@@ -44,7 +44,7 @@ Esimerkkejä Robot Framework testeistä, resurssitiedostoista, generoiduista lok
 - Tulokset tallentuvat tehtäväkohtaisiin alikansioihin
 
 ## Tehtävä 8 – GitHub Pages
-- Testiraportit luettavissa: [https://https://mikaemik98.github.io/frontendweb/](https://https://mikaemik98.github.io/frontendweb/)
+- Testiraportit luettavissa: [https://mikaemik98.github.io/frontendweb/](https://mikaemik98.github.io/frontendweb/)
 - Sivuston lähde: [docs/](../docs/)
 
 ## Tehtävä 9 – Taustapalvelimen API-testaus
