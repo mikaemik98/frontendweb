@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.5 on win32)" generated="2026-04-20T21:19:45.265156" rpa="false" schemaversion="5">
+<suite id="s1" name="Api Tests" source="C:\Users\Mikae\OneDrive\Tiedostot\Front-end\hyte-projekti\tests\tehtava9\api_tests.robot">
+<test id="s1-t1" name="Kirjautuminen palauttaa tokenin" line="12">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-20T21:19:45.617058" level="INFO">${body} = {'username': 'robot', 'password': 'robot1234'}</msg>
+<var>${body}</var>
+<arg>username=${USERNAME}</arg>
+<arg>password=${PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-20T21:19:45.615763" elapsed="0.001295"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2026-04-20T21:19:47.970011" level="INFO">POST Request : url=http://localhost:3000/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '46', 'Content-Type': 'application/json'} 
+ body=b'{"username": "robot", "password": "robot1234"}' 
+ </msg>
+<msg time="2026-04-20T21:19:47.970011" level="INFO">POST Response : url=http://localhost:3000/api/auth/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '361', 'ETag': 'W/"169-EGK987n3CFd74fOqeuRuIJaL/zM"', 'Date': 'Mon, 20 Apr 2026 18:19:47 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"login ok","user":{"user_id":5,"username":"robot","email":"robot@example.com","user_level":"regular"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJleHAiOjE3NzY3OTU1ODd9.tN-oaeYPdnHdme7Y-UaK48H6sJJY5cuTeyAYgF8ncag"} 
+ </msg>
+<msg time="2026-04-20T21:19:47.970011" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/api/auth/login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2026-04-20T21:19:45.617058" elapsed="2.352953"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-04-20T21:19:47.971361" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-04-20T21:19:47.970011" elapsed="0.001350"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-20T21:19:47.972361" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJleHAiOjE3NzY3OTU1ODd9.tN-oae...</msg>
+<var>${token}</var>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-20T21:19:47.971361" elapsed="0.001000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-04-20T21:19:47.972361" level="INFO">Length is 237.</msg>
+<arg>${token}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-04-20T21:19:47.972361" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-20T21:19:47.973359" level="INFO">${TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJleHAiOjE3NzY3OTU1ODd9.tN-oae...</msg>
+<arg>${TOKEN}</arg>
+<arg>${token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-20T21:19:47.973359" elapsed="0.000000"/>
+</kw>
+<doc>POST /api/auth/login palauttaa JWT-tokenin</doc>
+<status status="PASS" start="2026-04-20T21:19:45.613686" elapsed="2.359673"/>
+</test>
+<test id="s1-t2" name="Hae merkinnät vaatii kirjautumisen" line="21">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-04-20T21:19:50.027904" level="INFO">GET Request : url=http://localhost:3000/api/entries 
+ path_url=/api/entries 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-20T21:19:50.029087" level="INFO">GET Response : url=http://localhost:3000/api/entries 
+ status=401, reason=Unauthorized 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '12', 'ETag': 'W/"c-dAuDFQrdjS3hezqxDTNgW7AOlYk"', 'Date': 'Mon, 20 Apr 2026 18:19:50 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=Unauthorized 
+ </msg>
+<msg time="2026-04-20T21:19:50.029087" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/api/entries</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-04-20T21:19:47.975450" elapsed="2.053637"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-04-20T21:19:50.030093" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-04-20T21:19:50.029087" elapsed="0.001006"/>
+</kw>
+<doc>GET /api/entries ilman tokenia palauttaa 401</doc>
+<status status="PASS" start="2026-04-20T21:19:47.974436" elapsed="2.055657"/>
+</test>
+<test id="s1-t3" name="Hae merkinnät tokenilla" line="26">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-20T21:19:50.032134" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJle...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-20T21:19:50.031129" elapsed="0.001005"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-04-20T21:19:52.084174" level="INFO">GET Request : url=http://localhost:3000/api/entries 
+ path_url=/api/entries 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJleHAiOjE3NzY3OTU1ODd9.tN-oaeYPdnHdme7Y-UaK48H6sJJY5cuTeyAYgF8ncag'} 
+ body=None 
+ </msg>
+<msg time="2026-04-20T21:19:52.084174" level="INFO">GET Response : url=http://localhost:3000/api/entries 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '200', 'ETag': 'W/"c8-n9T8EXeHYGgIOTjUielgiULRwMo"', 'Date': 'Mon, 20 Apr 2026 18:19:52 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=[{"entry_id":7,"user_id":5,"entry_date":"2025-06-14T21:00:00.000Z","mood":"Hyvä","weight":"75.00","sleep_hours":8,"notes":"Automaattitesti - Robot Framework","created_at":"2026-04-12T10:57:17.000Z"}] 
+ </msg>
+<msg time="2026-04-20T21:19:52.084174" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/api/entries</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-04-20T21:19:50.032134" elapsed="2.052040"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-04-20T21:19:52.085188" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-04-20T21:19:52.085188" elapsed="0.001017"/>
+</kw>
+<doc>GET /api/entries tokenilla palauttaa merkinnät</doc>
+<status status="PASS" start="2026-04-20T21:19:50.031129" elapsed="2.055076"/>
+</test>
+<test id="s1-t4" name="Lisää uusi merkintä" line="32">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-20T21:19:52.088310" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJle...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-20T21:19:52.087209" elapsed="0.001101"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-20T21:19:52.089335" level="INFO">${body} = {'entry_date': '2025-06-15', 'mood': 'Hyvä', 'weight': 75, 'sleep_hours': 8, 'notes': 'Robot Framework API testi'}</msg>
+<var>${body}</var>
+<arg>entry_date=2025-06-15</arg>
+<arg>mood=Hyvä</arg>
+<arg>weight=${75}</arg>
+<arg>sleep_hours=${8}</arg>
+<arg>notes=Robot Framework API testi</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-20T21:19:52.088310" elapsed="0.001025"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2026-04-20T21:19:54.164878" level="INFO">POST Request : url=http://localhost:3000/api/entries 
+ path_url=/api/entries 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJleHAiOjE3NzY3OTU1ODd9.tN-oaeYPdnHdme7Y-UaK48H6sJJY5cuTeyAYgF8ncag', 'Content-Length': '119', 'Content-Type': 'application/json'} 
+ body=b'{"entry_date": "2025-06-15", "mood": "Hyv\\u00e4", "weight": 75, "sleep_hours": 8, "notes": "Robot Framework API testi"}' 
+ </msg>
+<msg time="2026-04-20T21:19:54.164878" level="INFO">POST Response : url=http://localhost:3000/api/entries 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '43', 'ETag': 'W/"2b-ltGaDwscPz84SqLGBz82PR7Lfic"', 'Date': 'Mon, 20 Apr 2026 18:19:54 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"New entry added.","entry_id":8} 
+ </msg>
+<msg time="2026-04-20T21:19:54.164878" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/api/entries</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2026-04-20T21:19:52.090340" elapsed="2.074538"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-04-20T21:19:54.165881" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-04-20T21:19:54.164878" elapsed="0.001003"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-04-20T21:19:54.167058" level="INFO">${entry_id} = 8</msg>
+<var>${entry_id}</var>
+<arg>${response.json()}</arg>
+<arg>entry_id</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-04-20T21:19:54.165881" elapsed="0.001177"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-20T21:19:54.168066" level="INFO">${ENTRY_ID} = 8</msg>
+<arg>${ENTRY_ID}</arg>
+<arg>${entry_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-20T21:19:54.167058" elapsed="0.001008"/>
+</kw>
+<doc>POST /api/entries lisää uuden merkinnän</doc>
+<status status="PASS" start="2026-04-20T21:19:52.087209" elapsed="2.080857"/>
+</test>
+<test id="s1-t5" name="Poista merkintä" line="46">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-20T21:19:54.170198" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJle...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-20T21:19:54.169073" elapsed="0.001125"/>
+</kw>
+<kw name="DELETE" owner="RequestsLibrary">
+<msg time="2026-04-20T21:19:56.206438" level="INFO">DELETE Request : url=http://localhost:3000/api/entries/8 
+ path_url=/api/entries/8 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJ1c2VybmFtZSI6InJvYm90IiwiZW1haWwiOiJyb2JvdEBleGFtcGxlLmNvbSIsInVzZXJfbGV2ZWwiOiJyZWd1bGFyIiwiaWF0IjoxNzc2NzA5MTg3LCJleHAiOjE3NzY3OTU1ODd9.tN-oaeYPdnHdme7Y-UaK48H6sJJY5cuTeyAYgF8ncag', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-04-20T21:19:56.206438" level="INFO">DELETE Response : url=http://localhost:3000/api/entries/8 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '27', 'ETag': 'W/"1b-ARWttNafxzims0T68YcmJsUooAU"', 'Date': 'Mon, 20 Apr 2026 18:19:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"entry deleted"} 
+ </msg>
+<msg time="2026-04-20T21:19:56.206438" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/api/entries/${ENTRY_ID}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request.</doc>
+<status status="PASS" start="2026-04-20T21:19:54.170198" elapsed="2.036240"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-04-20T21:19:56.207448" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-04-20T21:19:56.206438" elapsed="0.001010"/>
+</kw>
+<doc>DELETE /api/entries/:id poistaa merkinnän</doc>
+<status status="PASS" start="2026-04-20T21:19:54.169073" elapsed="2.038375"/>
+</test>
+<status status="PASS" start="2026-04-20T21:19:45.266388" elapsed="10.942283"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Api Tests" id="s1" pass="5" fail="0" skip="0">Api Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
